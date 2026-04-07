@@ -44,7 +44,7 @@ To run hidden testcases:
 
 \- Place matching hidden testbenches in tb/
 
-\- Update the problems list in agent.py if needed
+\- Update the problems list in agent.py
 
 \## Run
 
