@@ -1,0 +1,83 @@
+dot_product:
+  description: >
+    Parameterized dot product engine for Sky130 HD that should optimize both power and timing.
+    Accept two signed input vectors A and B of length N and compute the signed scalar dot product.
+    Minimize total power and critical path delay together rather than maximizing throughput.
+    A multi-cycle implementation is explicitly allowed if it reduces switching activity, cell count,
+    and combinational depth. Serial or folded multiply-accumulate microarchitectures are allowed.
+    Valid may assert several cycles after the inputs are observed, but it must assert exactly when
+    dot_out is correct and dot_out must remain stable once produced.
+
+  tech_node: SkyWater 130HD
+  clock_period: 4.5ns
+
+  parameters:
+    N: 8
+    WIDTH: 8
+
+  ports:
+    - name: clk
+      direction: input
+      type: logic
+      description: Clock input (rising-edge)
+
+    - name: rst
+      direction: input
+      type: logic
+      description: Active-high synchronous reset
+
+    - name: A
+      direction: input
+      type: logic signed [N-1:0][WIDTH-1:0]
+      description: Packed signed vector input A
+
+    - name: B
+      direction: input
+      type: logic signed [N-1:0][WIDTH-1:0]
+      description: Packed signed vector input B
+
+    - name: dot_out
+      direction: output
+      type: logic signed [2*WIDTH+3:0]
+      description: Final dot product result (signed scalar)
+
+    - name: valid
+      direction: output
+      type: logic
+      description: High for one cycle when dot_out is valid
+
+  module_signature: |
+    module dot_product #(
+        parameter int N = 8,
+        parameter int WIDTH = 8
+    ) (
+        input  logic clk,
+        input  logic rst,
+        input  logic signed [N-1:0][WIDTH-1:0] A,
+        input  logic signed [N-1:0][WIDTH-1:0] B,
+        output logic signed [2*WIDTH+3:0] dot_out,
+        output logic valid
+    );
+
+  implementation_guidance:
+    - Preserve the exact module signature and default parameter values.
+    - Optimize for the joint objective of low total power and short critical path.
+    - Prefer a folded or serial MAC datapath if that lowers power while still meeting clock.
+    - Additional fixed latency is acceptable.
+    - Do not assume new inputs arrive every cycle; throughput is secondary to power and timing.
+    - Avoid wide combinational reduction trees unless they are clearly better for both power and timing.
+
+  sample_usage:
+    description: >
+      A single test case for N=8 and WIDTH=8, with precomputed dot product result shown.
+      The exact valid latency may be multiple cycles because low-power multi-cycle execution is allowed.
+    clk_sequence:   [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    rst_sequence:   [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    A_sequence:
+      - [[-40, 50, -50, 31, 14, 9, 6, -32]]
+    B_sequence:
+      - [[-1, 30, 41, 14, 37, 50, 22, 29]]
+    expected_valid:
+      - [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+    expected_dot_out:
+      - [null, null, null, null, null, null, null, null, null, 96, null, null, null, null]

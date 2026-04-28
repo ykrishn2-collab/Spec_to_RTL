@@ -1,0 +1,80 @@
+dot_product:
+  description: >
+    Parameterized pipelined dot product engine.
+    Accepts two input vectors A and B of length N, performs element-wise signed multiplication
+    followed by summation of partial products. The result is a single signed scalar value with a valid flag.
+    Prioritize maximum clock frequency over latency or area. A and B may be internally registered,
+    the reduction should use a balanced tree, and intermediate sums may be split across multiple
+    pipeline stages if that improves timing.
+
+  tech_node: SkyWater 130HD
+  clock_period: 4.5ns
+
+  parameters:
+    N: 8             # Vector length
+    WIDTH: 8         # Bit width of signed input elements
+
+  ports:
+    - name: clk
+      direction: input
+      type: logic
+      description: Clock input (rising-edge)
+
+    - name: rst
+      direction: input
+      type: logic
+      description: Active-high synchronous reset
+
+    - name: A
+      direction: input
+      type: logic signed [N-1:0][WIDTH-1:0]
+      description: Packed signed vector input A
+
+    - name: B
+      direction: input
+      type: logic signed [N-1:0][WIDTH-1:0]
+      description: Packed signed vector input B
+
+    - name: dot_out
+      direction: output
+      type: logic signed [2*WIDTH+3:0]
+      description: Final dot product result (signed scalar)
+
+    - name: valid
+      direction: output
+      type: logic
+      description: High for one cycle when dot_out is valid
+
+  module_signature: |
+    module dot_product #(
+        parameter int N = 8,
+        parameter int WIDTH = 8
+    ) (
+        input  logic clk,
+        input  logic rst,
+        input  logic signed [N-1:0][WIDTH-1:0] A,
+        input  logic signed [N-1:0][WIDTH-1:0] B,
+        output logic signed [2*WIDTH+3:0] dot_out,
+        output logic valid
+    );
+
+  implementation_guidance:
+    - Preserve the exact module signature and default parameter values.
+    - Optimize for high Fmax on Sky130 HD.
+    - Use a balanced pipelined reduction tree rather than a long single-cycle accumulation chain.
+    - Additional fixed pipeline latency is acceptable as long as valid asserts exactly when dot_out is ready.
+    - Throughput may remain one result per accepted input vector once the pipeline is filled.
+
+  sample_usage:
+    description: >
+      A single test case for N=8 and WIDTH=8, with precomputed dot product result shown.
+      The exact valid latency may be multiple cycles because timing-friendly pipelining is allowed.
+    clk_sequence:   [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    rst_sequence:   [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    A_sequence:
+      - [[-40, 50, -50, 31, 14, 9, 6, -32]]
+    B_sequence:
+      - [[-1, 30, 41, 14, 37, 50, 22, 29]]
+    expected_valid: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+    expected_dot_out:
+      - [null, null, null, null, 96, null, null, null, null, null]
