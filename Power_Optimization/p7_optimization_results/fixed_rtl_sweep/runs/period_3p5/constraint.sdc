@@ -1,0 +1,5 @@
+create_clock -name clk -period 3.5 [get_ports clk]
+set_input_delay 0.5 -clock clk [get_ports rst]
+set_input_delay 0.5 -clock clk [get_ports enable]
+set_input_delay 0.5 -clock clk [get_ports x_in]
+set_output_delay 0.5 -clock clk [get_ports exp_out]

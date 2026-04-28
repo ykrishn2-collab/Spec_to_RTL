@@ -1,0 +1,3 @@
+iteration,attempt_name,target_period_ns,period_min_ns,wns_ns,worst_slack,fmax_mhz,total_power_w,total_power_mw,status,rtl_path,attempt_dir
+1,spread,3.0,2.42,0.5764,0.58,412.6,0.00185,1.85,PASS,C:\Users\kyash\spec2rtl_agent\separate_p7_fullflow_run2\optimized_point_powerfix2\iterations\iter_01\p7_initial_optimized_iter_01.v,C:\Users\kyash\spec2rtl_agent\separate_p7_fullflow_run2\optimized_point_powerfix2\iterations\iter_01\backend_attempts\attempt_spread
+2,base,3.0,2.53,0.4689,0.47,395.09,0.00115,1.15,PASS,C:\Users\kyash\spec2rtl_agent\separate_p7_fullflow_run2\optimized_point_powerfix2\iterations\iter_02\p7_initial_optimized_iter_02.v,C:\Users\kyash\spec2rtl_agent\separate_p7_fullflow_run2\optimized_point_powerfix2\iterations\iter_02\backend_attempts\attempt_base

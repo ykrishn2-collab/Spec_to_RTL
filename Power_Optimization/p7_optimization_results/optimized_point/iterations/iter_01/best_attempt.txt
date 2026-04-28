@@ -1,0 +1,9 @@
+status=PASS
+target_period_ns=3.0
+wns_ns=0.5764
+worst_slack=0.58
+period_min_ns=2.42
+fmax_mhz=412.6
+total_power_mw=1.85
+attempt_name=spread
+rtl_path=C:\Users\kyash\spec2rtl_agent\separate_p7_fullflow_run2\optimized_point_powerfix2\iterations\iter_01\p7_initial_optimized_iter_01.v

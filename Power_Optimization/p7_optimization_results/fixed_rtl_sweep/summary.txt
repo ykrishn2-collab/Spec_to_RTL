@@ -1,0 +1,3 @@
+rtl=C:\Users\kyash\spec2rtl_agent\separate_p7_fullflow_run2\min_period_closure\p7_initial_optimized.v
+csv=C:\Users\kyash\spec2rtl_agent\separate_p7_fullflow_run2\fixed_rtl_sweep\results.csv
+plot=C:\Users\kyash\spec2rtl_agent\separate_p7_fullflow_run2\fixed_rtl_sweep\worst_slack_vs_power.svg

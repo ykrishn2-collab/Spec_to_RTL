@@ -1,0 +1,8 @@
+status=PASS
+target_period_ns=3.0
+wns_ns=0.4343
+worst_slack=0.43
+period_min_ns=2.57
+fmax_mhz=389.75
+total_power_mw=1.17
+attempt_name=spread

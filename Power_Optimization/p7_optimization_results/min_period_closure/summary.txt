@@ -1,0 +1,9 @@
+seed_rtl=C:\Users\kyash\spec2rtl_agent\separate_p7_fullflow_run2\initial_rtl\p7_initial.v
+optimized_rtl=C:\Users\kyash\spec2rtl_agent\separate_p7_fullflow_run2\min_period_closure\p7_initial_optimized.v
+best_iteration=1
+best_attempt=base
+target_period=3.0
+worst_slack=0.58
+wns_ns=0.5829
+power_mw=1.66
+status=PASS

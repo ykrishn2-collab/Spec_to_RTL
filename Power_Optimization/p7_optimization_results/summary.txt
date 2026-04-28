@@ -1,0 +1,7 @@
+initial_rtl=initial_rtl\p7_initial.v
+closing_rtl=min_period_closure\p7_initial_optimized.v
+min_period_closure=min_period_closure
+fixed_rtl_sweep=fixed_rtl_sweep
+optimized_point=optimized_point
+baseline_plot=fixed_rtl_sweep\worst_slack_vs_power.svg
+optimized_overlay=optimized_point\overlay_worst_slack_vs_power.svg

@@ -1,0 +1,66 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='960' height='640' viewBox='0 0 960 640'>
+<style>
+text { font-family: Arial, sans-serif; fill: #111; }
+.axis { stroke: #222; stroke-width: 2; }
+.grid { stroke: #d8d8d8; stroke-width: 1; }
+.tick { font-size: 12px; }
+.label { font-size: 14px; }
+.title { font-size: 20px; font-weight: bold; }
+.point-label { font-size: 11px; fill: #334155; }
+.base { fill: none; stroke: #64748b; stroke-width: 2.5; }
+.base-point { fill: #64748b; }
+.opt-point { fill: #b91c1c; }
+</style>
+<rect x='0' y='0' width='960' height='640' fill='#fcfcf8' />
+<text class='title' x='90' y='28'>Optimized Point vs Baseline Worst Slack-Power Curve</text>
+<line class='grid' x1='90.0' y1='40' x2='90.0' y2='550' />
+<line class='grid' x1='90' y1='550.0' x2='910' y2='550.0' />
+<text class='tick' x='90.0' y='572' text-anchor='middle'>0.10</text>
+<text class='tick' x='80' y='554.0' text-anchor='end'>0.63</text>
+<line class='grid' x1='254.0' y1='40' x2='254.0' y2='550' />
+<line class='grid' x1='90' y1='448.0' x2='910' y2='448.0' />
+<text class='tick' x='254.0' y='572' text-anchor='middle'>0.99</text>
+<text class='tick' x='80' y='452.0' text-anchor='end'>0.86</text>
+<line class='grid' x1='418.0' y1='40' x2='418.0' y2='550' />
+<line class='grid' x1='90' y1='346.0' x2='910' y2='346.0' />
+<text class='tick' x='418.0' y='572' text-anchor='middle'>1.88</text>
+<text class='tick' x='80' y='350.0' text-anchor='end'>1.08</text>
+<line class='grid' x1='582.0' y1='40' x2='582.0' y2='550' />
+<line class='grid' x1='90' y1='244.0' x2='910' y2='244.0' />
+<text class='tick' x='582.0' y='572' text-anchor='middle'>2.77</text>
+<text class='tick' x='80' y='248.0' text-anchor='end'>1.30</text>
+<line class='grid' x1='746.0' y1='40' x2='746.0' y2='550' />
+<line class='grid' x1='90' y1='142.0' x2='910' y2='142.0' />
+<text class='tick' x='746.0' y='572' text-anchor='middle'>3.66</text>
+<text class='tick' x='80' y='146.0' text-anchor='end'>1.53</text>
+<line class='grid' x1='910.0' y1='40' x2='910.0' y2='550' />
+<line class='grid' x1='90' y1='40.0' x2='910' y2='40.0' />
+<text class='tick' x='910.0' y='572' text-anchor='middle'>4.55</text>
+<text class='tick' x='80' y='44.0' text-anchor='end'>1.75</text>
+<line class='axis' x1='90' y1='550' x2='910' y2='550' />
+<line class='axis' x1='90' y1='40' x2='90' y2='550' />
+<text class='label' x='500.0' y='616' text-anchor='middle'>Worst Slack Max (ns)</text>
+<text class='label' x='24' y='295.0' text-anchor='middle' transform='rotate(-90 24 295.0)'>Total Power (mW)</text>
+<polyline class='base' points='178.6,82.5 237.5,200.6 318.6,250.5 377.5,318.6 469.6,373.1 565.4,417.6 659.3,454.4 742.2,474.8 841.7,507.5' />
+<circle class='base-point' cx='178.6' cy='82.5' r='4.5' />
+<text class='point-label' x='186.6' y='78.5'>3.0 ns</text>
+<circle class='base-point' cx='237.5' cy='200.6' r='4.5' />
+<text class='point-label' x='245.5' y='196.6'>3.5 ns</text>
+<circle class='base-point' cx='318.6' cy='250.5' r='4.5' />
+<text class='point-label' x='326.6' y='246.5'>4.0 ns</text>
+<circle class='base-point' cx='377.5' cy='318.6' r='4.5' />
+<text class='point-label' x='385.5' y='314.6'>4.5 ns</text>
+<circle class='base-point' cx='469.6' cy='373.1' r='4.5' />
+<text class='point-label' x='477.6' y='369.1'>5.0 ns</text>
+<circle class='base-point' cx='565.4' cy='417.6' r='4.5' />
+<text class='point-label' x='573.4' y='413.6'>5.5 ns</text>
+<circle class='base-point' cx='659.3' cy='454.4' r='4.5' />
+<text class='point-label' x='667.3' y='450.4'>6.0 ns</text>
+<circle class='base-point' cx='742.2' cy='474.8' r='4.5' />
+<text class='point-label' x='750.2' y='470.8'>6.5 ns</text>
+<circle class='base-point' cx='841.7' cy='507.5' r='4.5' />
+<text class='point-label' x='849.7' y='503.5'>7.0 ns</text>
+<circle class='opt-point' cx='158.3' cy='314.1' r='7' />
+<text class='tick' x='166.3' y='306.1'>optimized</text>
+<text class='point-label' x='166.3' y='322.1'>3.0 ns</text>
+</svg>

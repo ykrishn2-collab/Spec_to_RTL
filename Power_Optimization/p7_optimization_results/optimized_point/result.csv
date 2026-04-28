@@ -1,0 +1,2 @@
+target_period_ns,period_min_ns,wns_ns,worst_slack,fmax_mhz,total_power_w,total_power_mw,status,attempt_name,iteration,rtl_path,attempt_dir
+3.0,2.53,0.4689,0.47,395.09,0.00115,1.15,PASS,base,2,C:\Users\kyash\spec2rtl_agent\separate_p7_fullflow_run2\optimized_point_powerfix2\iterations\iter_02\p7_initial_optimized_iter_02.v,C:\Users\kyash\spec2rtl_agent\separate_p7_fullflow_run2\optimized_point_powerfix2\iterations\iter_02\backend_attempts\attempt_base

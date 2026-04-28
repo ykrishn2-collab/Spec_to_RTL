@@ -1,0 +1,1572 @@
+STDOUT:
+rm -f ./results/sky130hd/exp_fixed_point/base/3_*place*.odb
+rm -f ./results/sky130hd/exp_fixed_point/base/3_place.sdc
+rm -f ./results/sky130hd/exp_fixed_point/base/3_*.def ./results/sky130hd/exp_fixed_point/base/3_*.v
+rm -f ./reports/sky130hd/exp_fixed_point/base/3_*
+rm -f ./logs/sky130hd/exp_fixed_point/base/3_*
+/home/kyash/OpenROAD-flow-scripts-master/flow/scripts/flow.sh 2_1_floorplan floorplan
+Running floorplan.tcl, stage 2_1_floorplan
+read_liberty /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_db ./results/sky130hd/exp_fixed_point/base/1_synth.odb
+read_sdc ./results/sky130hd/exp_fixed_point/base/1_synth.sdc
+source /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/setRC.tcl
+Master sky130_ef_sc_hd__decap_12 is loaded but not used in the design
+Removed 0 unused instances and 0 unused nets.
+
+==========================================================================
+Floorplan check_setup
+--------------------------------------------------------------------------
+number instances in verilog is 515
+[WARNING IFP-0028] Core area lower left (30.000, 30.000) snapped to (30.360, 32.640).
+[INFO IFP-0001] Added 65 rows of 390 site unithd.
+[INFO IFP-0100] Die BBox:  (  0.000  0.000 ) ( 240.000 240.000 ) um
+[INFO IFP-0101] Core BBox: ( 30.360 32.640 ) ( 209.760 209.440 ) um
+[INFO IFP-0102] Core area:                        31717.920 um^2
+[INFO IFP-0103] Total instances area:              3716.064 um^2
+[INFO IFP-0104] Effective utilization:                0.117
+[INFO IFP-0105] Number of instances:                    515
+source /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/make_tracks.tcl
+source /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/fastroute.tcl
+Repair tie lo fanout...
+[INFO RSZ-0042] Inserted 6 tie sky130_fd_sc_hd__conb_1 instances.
+Repair tie hi fanout...
+repair_timing -setup_margin 0 -hold_margin 0 -repair_tns 100 -match_cell_footprint -setup -skip_last_gasp -sequence unbuffer,sizeup,swap,vt_swap -verbose
+[WARNING EST-0027] no estimated parasitics. Using wire load models.
+[INFO RSZ-0100] Repair move sequence: UnbufferMove SizeUpMove SwapPinsMove 
+[INFO RSZ-0098] No setup violations found
+Default units for flow
+ time 1ns
+ capacitance 1pF
+ resistance 1kohm
+ voltage 1v
+ current 1mA
+ power 1nW
+ distance 1um
+   Layer   | Unit Resistance | Unit Capacitance 
+           |       (kohm/um) |          (pF/um)
+------------------------------------------------
+       li1 |        7.18e-02 |         1.50e-04
+      met1 |        8.93e-04 |         1.72e-04
+      met2 |        8.93e-04 |         1.36e-04
+      met3 |        1.57e-04 |         2.15e-04
+      met4 |        1.57e-04 |         1.48e-04
+      met5 |        1.78e-05 |         1.54e-04
+------------------------------------------------
+
+   Layer   | Via Resistance 
+           |         (kohm) 
+----------------------------
+      mcon |       9.25e-03 
+       via |       4.50e-03 
+      via2 |       3.37e-03 
+      via3 |       3.77e-04 
+      via4 |       5.80e-06 
+----------------------------
+Report metrics stage 2, floorplan final...
+
+==========================================================================
+floorplan final report_design_area
+--------------------------------------------------------------------------
+Design area 3735 um^2 12% utilization.
+write_db ./results/sky130hd/exp_fixed_point/base/2_1_floorplan.odb
+write_sdc -no_timestamp ./results/sky130hd/exp_fixed_point/base/2_1_floorplan.sdc
+Log                        Elapsed/s Peak Memory/MB  sha1sum .odb [0:20)
+2_1_floorplan                      0            138 af37cc594a40e14fbdda
+/home/kyash/OpenROAD-flow-scripts-master/flow/scripts/flow.sh 2_2_floorplan_macro macro_place
+Running macro_place.tcl, stage 2_2_floorplan_macro
+read_liberty /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_db ./results/sky130hd/exp_fixed_point/base/2_1_floorplan.odb
+read_sdc ./results/sky130hd/exp_fixed_point/base/2_1_floorplan.sdc
+source /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/setRC.tcl
+No macros found: Skipping macro_placement
+Design area 3735 um^2 12% utilization.
+write_db ./results/sky130hd/exp_fixed_point/base/2_2_floorplan_macro.odb
+Log                        Elapsed/s Peak Memory/MB  sha1sum .odb [0:20)
+2_2_floorplan_macro                0            115 af37cc594a40e14fbdda
+/home/kyash/OpenROAD-flow-scripts-master/flow/scripts/flow.sh 2_3_floorplan_tapcell tapcell
+Running tapcell.tcl, stage 2_3_floorplan_tapcell
+read_liberty /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_db ./results/sky130hd/exp_fixed_point/base/2_2_floorplan_macro.odb
+read_sdc ./results/sky130hd/exp_fixed_point/base/2_1_floorplan.sdc
+source /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/setRC.tcl
+[INFO TAP-0005] Inserted 402 tapcells.
+Design area 4238 um^2 13% utilization.
+write_db ./results/sky130hd/exp_fixed_point/base/2_3_floorplan_tapcell.odb
+Log                        Elapsed/s Peak Memory/MB  sha1sum .odb [0:20)
+2_3_floorplan_tapcell              0            115 5cb858f5ef7db39dd649
+/home/kyash/OpenROAD-flow-scripts-master/flow/scripts/flow.sh 2_4_floorplan_pdn pdn
+Running pdn.tcl, stage 2_4_floorplan_pdn
+read_liberty /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_db ./results/sky130hd/exp_fixed_point/base/2_3_floorplan_tapcell.odb
+read_sdc ./results/sky130hd/exp_fixed_point/base/2_1_floorplan.sdc
+source /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/setRC.tcl
+[INFO PDN-0001] Inserting grid: grid
+Design area 4238 um^2 13% utilization.
+write_db ./results/sky130hd/exp_fixed_point/base/2_4_floorplan_pdn.odb
+Log                        Elapsed/s Peak Memory/MB  sha1sum .odb [0:20)
+2_4_floorplan_pdn                  0            119 cfb149bb3be8411a801b
+cp ./results/sky130hd/exp_fixed_point/base/2_4_floorplan_pdn.odb ./results/sky130hd/exp_fixed_point/base/2_floorplan.odb
+cp ./results/sky130hd/exp_fixed_point/base/2_1_floorplan.sdc ./results/sky130hd/exp_fixed_point/base/2_floorplan.sdc
+/home/kyash/OpenROAD-flow-scripts-master/flow/scripts/flow.sh 3_1_place_gp_skip_io global_place_skip_io
+Running global_place_skip_io.tcl, stage 3_1_place_gp_skip_io
+read_liberty /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_db ./results/sky130hd/exp_fixed_point/base/2_floorplan.odb
+read_sdc ./results/sky130hd/exp_fixed_point/base/2_floorplan.sdc
+source /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/setRC.tcl
+global_placement -skip_io -density 0.35 -pad_left 0 -pad_right 0
+[INFO GPL-0001] ---- Initialize GPL Main Data Structures
+[INFO GPL-0002] DBU: 1000
+[INFO GPL-0003] SiteSize: (  0.460  2.720 ) um
+[INFO GPL-0004] CoreBBox: ( 30.360 32.640 ) ( 209.760 209.440 ) um
+[INFO GPL-0036] Movable instances area:       3734.832 um^2
+[INFO GPL-0037] Total instances area:         4237.814 um^2
+[INFO GPL-0035] Pin density area adjust:       466.875 um^2
+[INFO GPL-0032] ---- Initialize Region: Top-level
+[INFO GPL-0006] Number of instances:               922
+[INFO GPL-0007] Movable instances:                 520
+[INFO GPL-0008] Fixed instances:                   402
+[INFO GPL-0009] Dummy instances:                     0
+[INFO GPL-0010] Number of nets:                    542
+[INFO GPL-0011] Number of pins:                   1864
+[INFO GPL-0012] Die BBox:  (  0.000  0.000 ) ( 240.000 240.000 ) um
+[INFO GPL-0013] Core BBox: ( 30.360 32.640 ) ( 209.760 209.440 ) um
+[INFO GPL-0016] Core area:                   31717.920 um^2
+[INFO GPL-0014] Region name: top-level.
+[INFO GPL-0015] Region area:                 31717.920 um^2
+[INFO GPL-0017] Fixed instances area:          502.982 um^2
+[INFO GPL-0018] Movable instances area:       4201.707 um^2
+[INFO GPL-0019] Utilization:                    13.461 %
+[INFO GPL-0020] Standard cells area:          4201.707 um^2
+[INFO GPL-0021] Large instances area:            0.000 um^2
+[INFO GPL-0005] ---- Execute Conjugate Gradient Initial Placement.
+[INFO GPL-0051] Source of initial instance position counters:
+	Odb location = 6	Core center = 514	Region center = 0
+[INFO GPL-0033] ---- Initialize Nesterov Region: Top-level
+[INFO GPL-0023] Placement target density:       0.3500
+[INFO GPL-0024] Movable insts average area:      8.080 um^2
+[INFO GPL-0025] Ideal bin area:                 23.086 um^2
+[INFO GPL-0026] Ideal bin count:                  1373
+[INFO GPL-0027] Total bin area:              31717.920 um^2
+[INFO GPL-0028] Bin count (X, Y):          32 ,     32
+[INFO GPL-0029] Bin size (W * H):       5.606 *  5.525 um
+[INFO GPL-0030] Number of bins:                   1024
+[INFO GPL-0007] ---- Execute Nesterov Global Placement.
+[INFO GPL-0031] HPWL: Half-Perimeter Wirelength
+Iteration | Overflow |     HPWL (um) |  HPWL(%) |   Penalty | Group
+---------------------------------------------------------------
+        0 |   0.9789 |  9.615840e+02 |   +0.00% |  1.93e-14 |      
+       10 |   0.9718 |  7.251560e+02 |  -24.59% |  3.15e-14 |      
+       20 |   0.9716 |  7.242700e+02 |   -0.12% |  5.13e-14 |      
+       30 |   0.9717 |  7.240300e+02 |   -0.03% |  8.36e-14 |      
+       40 |   0.9717 |  7.242520e+02 |   +0.03% |  1.36e-13 |      
+       50 |   0.9716 |  7.243220e+02 |   +0.01% |  2.22e-13 |      
+       60 |   0.9716 |  7.249140e+02 |   +0.08% |  3.61e-13 |      
+       70 |   0.9716 |  7.269580e+02 |   +0.28% |  5.88e-13 |      
+       80 |   0.9717 |  7.309500e+02 |   +0.55% |  9.58e-13 |      
+       90 |   0.9716 |  7.392870e+02 |   +1.14% |  1.56e-12 |      
+      100 |   0.9709 |  7.566710e+02 |   +2.35% |  2.54e-12 |      
+      110 |   0.9702 |  7.841570e+02 |   +3.63% |  4.14e-12 |      
+      120 |   0.9687 |  8.294430e+02 |   +5.78% |  6.75e-12 |      
+      130 |   0.9638 |  9.232940e+02 |  +11.31% |  1.10e-11 |      
+      140 |   0.9576 |  1.052084e+03 |  +13.95% |  1.79e-11 |      
+      150 |   0.9522 |  1.202714e+03 |  +14.32% |  2.92e-11 |      
+      160 |   0.9300 |  1.535396e+03 |  +27.66% |  4.75e-11 |      
+      170 |   0.9071 |  2.194716e+03 |  +42.94% |  7.74e-11 |      
+      180 |   0.8825 |  2.645807e+03 |  +20.55% |  1.26e-10 |      
+      190 |   0.8560 |  3.296359e+03 |  +24.59% |  2.05e-10 |      
+      200 |   0.8266 |  3.985485e+03 |  +20.91% |  3.34e-10 |      
+      210 |   0.7948 |  4.665520e+03 |  +17.06% |  5.44e-10 |      
+      220 |   0.7593 |  5.349545e+03 |  +14.66% |  8.87e-10 |      
+      230 |   0.7196 |  6.097850e+03 |  +13.99% |  1.44e-09 |      
+      240 |   0.6793 |  6.829370e+03 |  +12.00% |  2.35e-09 |      
+      250 |   0.6337 |  7.564141e+03 |  +10.76% |  3.83e-09 |      
+      260 |   0.5922 |  8.334981e+03 |  +10.19% |  6.24e-09 |      
+      270 |   0.5448 |  9.104985e+03 |   +9.24% |  1.02e-08 |      
+      280 |   0.4940 |  9.837551e+03 |   +8.05% |  1.66e-08 |      
+      290 |   0.4384 |  1.052401e+04 |   +6.98% |  2.70e-08 |      
+      300 |   0.3707 |  1.120341e+04 |   +6.46% |  4.39e-08 |      
+      310 |   0.3011 |  1.181305e+04 |   +5.44% |  6.73e-08 |      
+      320 |   0.2560 |  1.226594e+04 |   +3.83% |  9.92e-08 |      
+      330 |   0.2173 |  1.261766e+04 |   +2.87% |  1.46e-07 |      
+      340 |   0.1874 |  1.293553e+04 |   +2.52% |  2.15e-07 |      
+      350 |   0.1710 |  1.315969e+04 |   +1.73% |  3.17e-07 |      
+      360 |   0.1416 |  1.334246e+04 |   +1.39% |  4.67e-07 |      
+      370 |   0.1302 |  1.346622e+04 |   +0.93% |  6.88e-07 |      
+      380 |   0.1088 |  1.351562e+04 |   +0.37% |  1.01e-06 |      
+      387 |   0.0991 |  1.355942e+04 |          |  1.38e-06 |      
+---------------------------------------------------------------
+[INFO GPL-1001] Global placement finished at iteration 387
+[INFO GPL-1002] Placed Cell Area             4201.7065
+[INFO GPL-1003] Available Free Area         31214.9376
+[INFO GPL-1004] Minimum Feasible Density        0.1400 (cell_area / free_area)
+[INFO GPL-1006]   Suggested Target Densities:
+[INFO GPL-1007]     - For 90% usage of free space: 0.1496
+[INFO GPL-1008]     - For 80% usage of free space: 0.1683
+[INFO GPL-1009]     - For 50% usage of free space: 0.2692
+[INFO GPL-1014] Final placement area: 4201.71 (+0.00%)
+Design area 4238 um^2 13% utilization.
+write_db ./results/sky130hd/exp_fixed_point/base/3_1_place_gp_skip_io.odb
+Log                        Elapsed/s Peak Memory/MB  sha1sum .odb [0:20)
+3_1_place_gp_skip_io               1            117 ccd87791d18627917a65
+/home/kyash/OpenROAD-flow-scripts-master/flow/scripts/flow.sh 3_2_place_iop io_placement
+Running io_placement.tcl, stage 3_2_place_iop
+read_liberty /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_db ./results/sky130hd/exp_fixed_point/base/3_1_place_gp_skip_io.odb
+read_sdc ./results/sky130hd/exp_fixed_point/base/2_floorplan.sdc
+source /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/setRC.tcl
+place_pins -hor_layers met3 -ver_layers met2
+Found 0 macro blocks.
+Using 2 tracks default min distance between IO pins.
+[INFO PPL-0001] Number of available slots 864
+[INFO PPL-0002] Number of I/O             27
+[INFO PPL-0003] Number of I/O w/sink      27
+[INFO PPL-0004] Number of I/O w/o sink    0
+[INFO PPL-0005] Slots per section         200
+[INFO PPL-0008] Successfully assigned pins to sections.
+[INFO PPL-0012] I/O nets HPWL: 2084.86 um.
+Design area 4238 um^2 13% utilization.
+write_db ./results/sky130hd/exp_fixed_point/base/3_2_place_iop.odb
+Log                        Elapsed/s Peak Memory/MB  sha1sum .odb [0:20)
+3_2_place_iop                      0            116 b2810ec7576e77f43cad
+/home/kyash/OpenROAD-flow-scripts-master/flow/scripts/flow.sh 3_3_place_gp global_place
+Running global_place.tcl, stage 3_3_place_gp
+read_liberty /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_db ./results/sky130hd/exp_fixed_point/base/3_2_place_iop.odb
+read_sdc ./results/sky130hd/exp_fixed_point/base/2_floorplan.sdc
+source /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/setRC.tcl
+[INFO RSZ-0026] Removed 64 buffers.
+Perform port buffering...
+[INFO RSZ-0027] Inserted 10 sky130_fd_sc_hd__clkdlybuf4s50_1 input buffers.
+[INFO RSZ-0028] Inserted 10 sky130_fd_sc_hd__clkdlybuf4s50_1 output buffers.
+global_placement -density 0.35 -pad_left 0 -pad_right 0 -routability_driven -timing_driven -force_center_initial_place -min_phi_coef 0.95 -max_phi_coef 1.05
+[INFO GPL-0001] ---- Initialize GPL Main Data Structures
+[INFO GPL-0002] DBU: 1000
+[INFO GPL-0003] SiteSize: (  0.460  2.720 ) um
+[INFO GPL-0004] CoreBBox: ( 30.360 32.640 ) ( 209.760 209.440 ) um
+[INFO GPL-0036] Movable instances area:       3610.963 um^2
+[INFO GPL-0037] Total instances area:         4113.946 um^2
+[INFO GPL-0035] Pin density area adjust:       484.934 um^2
+[INFO GPL-0032] ---- Initialize Region: Top-level
+[INFO GPL-0006] Number of instances:               878
+[INFO GPL-0007] Movable instances:                 476
+[INFO GPL-0008] Fixed instances:                   402
+[INFO GPL-0009] Dummy instances:                     0
+[INFO GPL-0010] Number of nets:                    498
+[INFO GPL-0011] Number of pins:                   1803
+[INFO GPL-0012] Die BBox:  (  0.000  0.000 ) ( 240.000 240.000 ) um
+[INFO GPL-0013] Core BBox: ( 30.360 32.640 ) ( 209.760 209.440 ) um
+[INFO GPL-0016] Core area:                   31717.920 um^2
+[INFO GPL-0014] Region name: top-level.
+[INFO GPL-0015] Region area:                 31717.920 um^2
+[INFO GPL-0017] Fixed instances area:          502.982 um^2
+[INFO GPL-0018] Movable instances area:       4095.897 um^2
+[INFO GPL-0019] Utilization:                    13.122 %
+[INFO GPL-0020] Standard cells area:          4095.897 um^2
+[INFO GPL-0021] Large instances area:            0.000 um^2
+[INFO GPL-0005] ---- Execute Conjugate Gradient Initial Placement.
+[INFO GPL-0051] Source of initial instance position counters:
+	Odb location = 0	Core center = 476	Region center = 0
+[InitialPlace]  Iter: 1 conjugate gradient residual: 0.00000527 HPWL: 14944128
+[InitialPlace]  Iter: 2 conjugate gradient residual: 0.00000008 HPWL: 6447251
+[InitialPlace]  Iter: 3 conjugate gradient residual: 0.00000011 HPWL: 6087678
+[InitialPlace]  Iter: 4 conjugate gradient residual: 0.00000011 HPWL: 5707229
+[InitialPlace]  Iter: 5 conjugate gradient residual: 0.00000009 HPWL: 5684429
+[INFO GPL-0033] ---- Initialize Nesterov Region: Top-level
+[INFO GPL-0023] Placement target density:       0.3500
+[INFO GPL-0024] Movable insts average area:      8.605 um^2
+[INFO GPL-0025] Ideal bin area:                 24.585 um^2
+[INFO GPL-0026] Ideal bin count:                  1290
+[INFO GPL-0027] Total bin area:              31717.920 um^2
+[INFO GPL-0028] Bin count (X, Y):          32 ,     32
+[INFO GPL-0029] Bin size (W * H):       5.606 *  5.525 um
+[INFO GPL-0030] Number of bins:                   1024
+[INFO GPL-0007] ---- Execute Nesterov Global Placement.
+[INFO GPL-0031] HPWL: Half-Perimeter Wirelength
+Iteration | Overflow |     HPWL (um) |  HPWL(%) |   Penalty | Group
+---------------------------------------------------------------
+        0 |   0.9312 |  2.802915e+03 |   +0.00% |  4.74e-15 |      
+       10 |   0.8763 |  3.675312e+03 |  +31.12% |  7.72e-15 |      
+       20 |   0.8644 |  3.637518e+03 |   -1.03% |  1.26e-14 |      
+       30 |   0.8510 |  3.722166e+03 |   +2.33% |  2.05e-14 |      
+       40 |   0.8402 |  3.786165e+03 |   +1.72% |  3.34e-14 |      
+       50 |   0.8286 |  3.839401e+03 |   +1.41% |  5.44e-14 |      
+       60 |   0.8217 |  3.886445e+03 |   +1.23% |  8.86e-14 |      
+       70 |   0.8195 |  3.916579e+03 |   +0.78% |  1.44e-13 |      
+       80 |   0.8174 |  3.930922e+03 |   +0.37% |  2.35e-13 |      
+       90 |   0.8181 |  3.934110e+03 |   +0.08% |  3.83e-13 |      
+      100 |   0.8178 |  3.933091e+03 |   -0.03% |  6.23e-13 |      
+      110 |   0.8178 |  3.923955e+03 |   -0.23% |  1.02e-12 |      
+      120 |   0.8189 |  3.909812e+03 |   -0.36% |  1.65e-12 |      
+      130 |   0.8207 |  3.899819e+03 |   -0.26% |  2.69e-12 |      
+      140 |   0.8218 |  3.905843e+03 |   +0.15% |  4.39e-12 |      
+      150 |   0.8220 |  3.938397e+03 |   +0.83% |  7.15e-12 |      
+      160 |   0.8204 |  4.001590e+03 |   +1.60% |  1.16e-11 |      
+      170 |   0.8165 |  4.092503e+03 |   +2.27% |  1.90e-11 |      
+      180 |   0.8109 |  4.187157e+03 |   +2.31% |  3.09e-11 |      
+      190 |   0.8035 |  4.256118e+03 |   +1.65% |  5.03e-11 |      
+      200 |   0.7918 |  4.313368e+03 |   +1.35% |  8.20e-11 |      
+      210 |   0.7755 |  4.574055e+03 |   +6.04% |  1.34e-10 |      
+      220 |   0.7525 |  4.888969e+03 |   +6.88% |  2.18e-10 |      
+      230 |   0.7356 |  5.075943e+03 |   +3.82% |  3.54e-10 |      
+      240 |   0.7112 |  5.478096e+03 |   +7.92% |  5.77e-10 |      
+      250 |   0.6897 |  5.841506e+03 |   +6.63% |  9.40e-10 |      
+      260 |   0.6579 |  6.168783e+03 |   +5.60% |  1.53e-09 |      
+[INFO GPL-0100] Timing-driven iteration 1/2, virtual: false.
+[INFO GPL-0101]    Iter: 267, overflow: 0.632, keep resizer changes at: 1, HPWL: 6394167
+Iteration |   Area    | Resized | Buffers | Nets repaired | Remaining
+---------------------------------------------------------------------
+        0 |     +0.0% |       0 |       0 |             0 |       504
+    final |     +1.6% |       4 |       3 |             4 |         0
+---------------------------------------------------------------------
+[INFO RSZ-0034] Found 4 slew violations.
+[INFO RSZ-0039] Resized 4 instances.
+[INFO RSZ-0038] Inserted 3 buffers in 4 nets.
+   Iter   |    Area   | Removed | Inserted |   Pins
+          |           | Buffers | Buffers  | Remaining
+-------------------------------------------------------
+        0 |     +0.0% |       0 |        0 |       481
+       48 |     +0.0% |       0 |        0 |       433
+       96 |     +0.0% |       0 |        0 |       385
+      144 |     +0.2% |       0 |        1 |       337
+      192 |     +0.4% |       0 |        2 |       289
+      240 |     +1.4% |       0 |        8 |       241
+      288 |     +3.8% |       0 |       21 |       193
+      336 |     +3.8% |       0 |       21 |       145
+      384 |     +4.0% |       0 |       22 |        97
+      432 |     +4.7% |       0 |       26 |        49
+      480 |     +5.3% |       3 |       36 |         1
+    final |     +5.3% |       3 |       36 |         0
+-------------------------------------------------------
+[INFO GPL-0106] Timing-driven: worst slack 7.662752e-10
+[INFO GPL-0107] Timing-driven: repair_design delta area: 295.583 um^2 (+7.22%)
+[INFO GPL-0108] Timing-driven: repair_design, gpl delta gcells: 36 (+7.56%)
+[INFO GPL-0109] Timing-driven: repair_design, gcells created: 39, deleted: 3
+[INFO GPL-0110] Timing-driven: new target density: 0.3594693
+Iteration | Overflow |     HPWL (um) |  HPWL(%) |   Penalty | Group
+---------------------------------------------------------------
+      270 |   0.6360 |  7.148136e+03 |  +15.88% |  2.49e-09 |      
+[INFO GPL-0038] Routability snapshot saved at iter = 278
+      277 |   0.5974 |  7.588906e+03 |          |           |      
+      280 |   0.5823 |  7.724578e+03 |   +8.06% |  4.06e-09 |      
+      290 |   0.5511 |  8.177295e+03 |   +5.86% |  6.62e-09 |      
+      300 |   0.5074 |  8.653121e+03 |   +5.82% |  1.08e-08 |      
+      310 |   0.4542 |  9.125046e+03 |   +5.45% |  1.76e-08 |      
+      320 |   0.4014 |  9.729784e+03 |   +6.63% |  2.86e-08 |      
+      330 |   0.3422 |  1.025641e+04 |   +5.41% |  4.66e-08 |      
+[INFO GPL-0040] Routability iteration: 1
+[INFO GPL-0041] Total routing overflow: 0.0000
+[INFO GPL-0042] Number of overflowed tiles: 0 (0.00%)
+[INFO GPL-0043] Average top 0.5% routing congestion: 0.9415
+[INFO GPL-0044] Average top 1.0% routing congestion: 0.9141
+[INFO GPL-0045] Average top 2.0% routing congestion: 0.8749
+[INFO GPL-0046] Average top 5.0% routing congestion: 0.8099
+[INFO GPL-0047] Routability iteration weighted routing congestion: 0.9278
+[INFO GPL-0050] Weighted routing congestion is lower than target routing congestion(1.0100), end routability optimization.
+[INFO GPL-0090] Routability finished. Target routing congestion achieved succesfully.
+Iteration | Overflow |     HPWL (um) |  HPWL(%) |   Penalty | Group
+---------------------------------------------------------------
+      340 |   0.2936 |  1.070444e+04 |   +4.37% |  6.86e-08 |      
+      350 |   0.2540 |  1.106523e+04 |   +3.37% |  1.01e-07 |      
+      360 |   0.2198 |  1.130623e+04 |   +2.18% |  1.49e-07 |      
+[INFO GPL-0100] Timing-driven iteration 2/2, virtual: false.
+[INFO GPL-0101]    Iter: 370, overflow: 0.194, keep resizer changes at: 1, HPWL: 11462168
+Iteration |   Area    | Resized | Buffers | Nets repaired | Remaining
+---------------------------------------------------------------------
+        0 |     +0.0% |       0 |       0 |             0 |       540
+    final |     +0.0% |       0 |       0 |             0 |         0
+---------------------------------------------------------------------
+   Iter   |    Area   | Removed | Inserted |   Pins
+          |           | Buffers | Buffers  | Remaining
+-------------------------------------------------------
+        0 |     +0.0% |       0 |        0 |       481
+       48 |     +0.0% |       0 |        0 |       433
+       96 |     +0.0% |       0 |        0 |       385
+      144 |     -0.2% |       1 |        0 |       337
+      192 |     -0.3% |       2 |        0 |       289
+      240 |     -1.4% |       8 |        0 |       241
+      288 |     -3.2% |      21 |        2 |       193
+      336 |     -3.2% |      21 |        2 |       145
+      384 |     -3.1% |      22 |        4 |        97
+      432 |     -3.2% |      26 |        7 |        49
+      480 |     -2.9% |      36 |       19 |         1
+    final |     -2.9% |      36 |       19 |         0
+-------------------------------------------------------
+[INFO GPL-0106] Timing-driven: worst slack 4.935732e-10
+[INFO GPL-0107] Timing-driven: repair_design delta area: -127.622 um^2 (-2.91%)
+[INFO GPL-0108] Timing-driven: repair_design, gpl delta gcells: -17 (-3.32%)
+[INFO GPL-0109] Timing-driven: repair_design, gcells created: 19, deleted: 36
+[INFO GPL-0110] Timing-driven: new target density: 0.35538077
+Iteration | Overflow |     HPWL (um) |  HPWL(%) |   Penalty | Group
+---------------------------------------------------------------
+      370 |   0.1964 |  1.172286e+04 |   +3.68% |  2.19e-07 |      
+      380 |   0.1707 |  1.209767e+04 |   +3.20% |  3.23e-07 |      
+      390 |   0.1524 |  1.200063e+04 |   -0.80% |  4.76e-07 |      
+      400 |   0.1346 |  1.204741e+04 |   +0.39% |  7.01e-07 |      
+      410 |   0.1148 |  1.207298e+04 |   +0.21% |  1.03e-06 |      
+      420 |   0.1006 |  1.213460e+04 |   +0.51% |  1.52e-06 |      
+      421 |   0.0981 |  1.214111e+04 |          |  1.64e-06 |      
+---------------------------------------------------------------
+[INFO GPL-1001] Global placement finished at iteration 421
+[INFO GPL-1003] Routability mode iteration count: 61
+[INFO GPL-1005] Routability final weighted congestion: 0.8471
+[INFO GPL-1002] Placed Cell Area             4263.8579
+[INFO GPL-1003] Available Free Area         31214.9376
+[INFO GPL-1004] Minimum Feasible Density        0.1400 (cell_area / free_area)
+[INFO GPL-1006]   Suggested Target Densities:
+[INFO GPL-1007]     - For 90% usage of free space: 0.1518
+[INFO GPL-1008]     - For 80% usage of free space: 0.1707
+[INFO GPL-1009]     - For 50% usage of free space: 0.2732
+[INFO GPL-1011] Original area (um^2): 4095.90
+[INFO GPL-1012] Total routability artificial inflation: 0.00 (+0.00%)
+[INFO GPL-1013] Total timing-driven delta area: 167.96 (+4.10%)
+[INFO GPL-1014] Final placement area: 4263.86 (+4.10%)
+estimate_parasitics -placement
+Report metrics stage 3, global place...
+
+==========================================================================
+global place report_design_area
+--------------------------------------------------------------------------
+Design area 4274 um^2 13% utilization.
+write_db ./results/sky130hd/exp_fixed_point/base/3_3_place_gp.odb
+Log                        Elapsed/s Peak Memory/MB  sha1sum .odb [0:20)
+3_3_place_gp                       1            227 7cdc672a1cce776c6b9e
+/home/kyash/OpenROAD-flow-scripts-master/flow/scripts/flow.sh 3_4_place_resized resize
+Running resize.tcl, stage 3_4_place_resized
+read_liberty /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_db ./results/sky130hd/exp_fixed_point/base/3_3_place_gp.odb
+read_sdc ./results/sky130hd/exp_fixed_point/base/2_floorplan.sdc
+source /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/setRC.tcl
+estimate_parasitics -placement
+Perform buffer insertion and gate resizing...
+repair_design -verbose -match_cell_footprint
+Iteration |   Area    | Resized | Buffers | Nets repaired | Remaining
+---------------------------------------------------------------------
+        0 |     +0.0% |       0 |       0 |             0 |       523
+       10 |     +0.0% |       0 |       0 |             0 |       513
+       20 |     +0.0% |       0 |       0 |             0 |       503
+       30 |     +0.0% |       0 |       0 |             0 |       493
+       40 |     +0.0% |       0 |       0 |             0 |       483
+       50 |     +0.0% |       0 |       0 |             0 |       473
+       60 |     +0.0% |       0 |       0 |             0 |       463
+       70 |     +0.0% |       0 |       0 |             0 |       453
+       80 |     +0.0% |       0 |       0 |             0 |       443
+       90 |     +0.0% |       0 |       0 |             0 |       433
+      100 |     +0.0% |       0 |       0 |             0 |       423
+      110 |     +0.0% |       0 |       0 |             0 |       413
+      120 |     +0.0% |       0 |       0 |             0 |       403
+      130 |     +0.0% |       0 |       0 |             0 |       393
+      140 |     +0.0% |       0 |       0 |             0 |       383
+      150 |     +0.0% |       0 |       0 |             0 |       373
+      160 |     +0.0% |       0 |       0 |             0 |       363
+      170 |     +0.0% |       0 |       0 |             0 |       353
+      180 |     +0.0% |       0 |       0 |             0 |       343
+      190 |     +0.0% |       0 |       0 |             0 |       333
+      200 |     +0.0% |       0 |       0 |             0 |       323
+      210 |     +0.0% |       0 |       0 |             0 |       313
+      220 |     +0.0% |       0 |       0 |             0 |       303
+      230 |     +0.0% |       0 |       0 |             0 |       293
+      240 |     +0.0% |       0 |       0 |             0 |       283
+      250 |     +0.0% |       0 |       0 |             0 |       273
+      260 |     +0.0% |       0 |       0 |             0 |       263
+      270 |     +0.0% |       0 |       0 |             0 |       253
+      280 |     +0.0% |       0 |       0 |             0 |       243
+      290 |     +0.0% |       0 |       0 |             0 |       233
+      300 |     +0.0% |       0 |       0 |             0 |       223
+      310 |     +0.0% |       0 |       0 |             0 |       213
+      320 |     +0.0% |       0 |       0 |             0 |       203
+      330 |     +0.0% |       0 |       0 |             0 |       193
+      340 |     +0.0% |       0 |       0 |             0 |       183
+      350 |     +0.0% |       0 |       0 |             0 |       173
+      360 |     +0.0% |       0 |       0 |             0 |       163
+      370 |     +0.0% |       0 |       0 |             0 |       153
+      380 |     +0.0% |       0 |       0 |             0 |       143
+      390 |     +0.0% |       0 |       0 |             0 |       133
+      400 |     +0.0% |       0 |       0 |             0 |       123
+      410 |     +0.0% |       0 |       0 |             0 |       113
+      420 |     +0.0% |       0 |       0 |             0 |       103
+      430 |     +0.0% |       0 |       0 |             0 |        93
+      440 |     +0.0% |       0 |       0 |             0 |        83
+      450 |     +0.0% |       0 |       0 |             0 |        73
+      460 |     +0.0% |       0 |       0 |             0 |        63
+      470 |     +0.0% |       0 |       0 |             0 |        53
+      480 |     +0.0% |       0 |       0 |             0 |        43
+      490 |     +0.0% |       0 |       0 |             0 |        33
+      500 |     +0.0% |       0 |       0 |             0 |        23
+      510 |     +0.0% |       0 |       0 |             0 |        13
+      520 |     +0.0% |       0 |       0 |             0 |         3
+    final |     +0.0% |       0 |       0 |             0 |         0
+---------------------------------------------------------------------
+Floating nets: 
+Report metrics stage 3, resizer...
+
+==========================================================================
+resizer report_design_area
+--------------------------------------------------------------------------
+Design area 4274 um^2 13% utilization.
+Instance count before 897, after 897
+Pin count before 1820, after 1820
+write_db ./results/sky130hd/exp_fixed_point/base/3_4_place_resized.odb
+Log                        Elapsed/s Peak Memory/MB  sha1sum .odb [0:20)
+3_4_place_resized                  0            137 7cdc672a1cce776c6b9e
+/home/kyash/OpenROAD-flow-scripts-master/flow/scripts/flow.sh 3_5_place_dp detail_place
+Running detail_place.tcl, stage 3_5_place_dp
+read_liberty /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_db ./results/sky130hd/exp_fixed_point/base/3_4_place_resized.odb
+read_sdc ./results/sky130hd/exp_fixed_point/base/2_floorplan.sdc
+source /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/setRC.tcl
+[INFO DPL-0005] Max displacement: +/- 500 sites horizontally, +/- 100 rows vertically.
+Movements Summary
+---------------------------------------
+Total cells:                     495
+Diamond Move Success:            495 (100.00%)
+Diamond Move Failure:              0
+Rip-up and replace Success:        0 (  0.00% of diamond failures)
+Rip-up and replace Failure:        0
+Total Placement Failures:          0
+---------------------------------------
+Placement Analysis
+---------------------------------
+total displacement        651.8 u
+average displacement        0.7 u
+max displacement            4.3 u
+original HPWL           12153.1 u
+legalized HPWL          12510.5 u
+delta HPWL                    3 %
+
+Detailed placement improvement.
+[INFO DPL-0401] Setting random seed to 1.
+[INFO DPL-0402] Setting maximum displacement 5 1 to 13600 2720 units.
+[INFO DPL-0320] Collected 429 fixed cells.
+[INFO DPL-0318] Collected 495 single height cells.
+[INFO DPL-0321] Collected 0 wide cells.
+[INFO DPL-0322] Image (30360, 32640) - (209760, 209440)
+[INFO DPL-0310] Assigned 495 cells into segments.  Movement in X-direction is 0.000000, movement in Y-direction is 0.000000.
+[INFO DPL-0313] Found 0 cells in wrong regions.
+[INFO DPL-0315] Found 0 row alignment problems.
+[INFO DPL-0314] Found 0 site alignment problems.
+[INFO DPL-0311] Found 0 overlaps between adjacent cells.
+[INFO DPL-0312] Found 0 edge spacing violations and 0 padding violations.
+[INFO DPL-0303] Running algorithm for independent set matching.
+[INFO DPL-0300] Set matching objective is wirelength.
+[INFO DPL-0301] Pass   1 of matching; objective is 1.251243e+07.
+[INFO DPL-0302] End of matching; objective is 1.251243e+07, improvement is 0.00 percent.
+[INFO DPL-0303] Running algorithm for global swaps.
+[INFO DPL-0306] Pass   1 of global swaps; hpwl is 1.217016e+07.
+[INFO DPL-0306] Pass   2 of global swaps; hpwl is 1.203030e+07.
+[INFO DPL-0306] Pass   3 of global swaps; hpwl is 1.199422e+07.
+[INFO DPL-0307] End of global swaps; objective is 1.199422e+07, improvement is 4.14 percent.
+[INFO DPL-0303] Running algorithm for vertical swaps.
+[INFO DPL-0308] Pass   1 of vertical swaps; hpwl is 1.189781e+07.
+[INFO DPL-0309] End of vertical swaps; objective is 1.189781e+07, improvement is 0.80 percent.
+[INFO DPL-0303] Running algorithm for reordering.
+[INFO DPL-0304] Pass   1 of reordering; objective is 1.189481e+07.
+[INFO DPL-0305] End of reordering; objective is 1.189481e+07, improvement is 0.03 percent.
+[INFO DPL-0303] Running algorithm for random improvement.
+[INFO DPL-0324] Random improver is using random generator.
+[INFO DPL-0325] Random improver is using hpwl objective.
+[INFO DPL-0326] Random improver cost string is (a).
+[INFO DPL-0332] End of pass, Generator random called 9900 times.
+[INFO DPL-0335] Generator random, Cumulative attempts 9900, swaps 650, moves  4394 since last reset.
+[INFO DPL-0333] End of pass, Objective hpwl, Initial cost 1.189481e+07, Scratch cost 1.154992e+07, Incremental cost 1.154992e+07, Mismatch? N
+[INFO DPL-0338] End of pass, Total cost is 1.154992e+07.
+[INFO DPL-0327] Pass   1 of random improver; improvement in cost is 2.90 percent.
+[INFO DPL-0332] End of pass, Generator random called 9900 times.
+[INFO DPL-0335] Generator random, Cumulative attempts 19800, swaps 1322, moves  8600 since last reset.
+[INFO DPL-0333] End of pass, Objective hpwl, Initial cost 1.154992e+07, Scratch cost 1.135169e+07, Incremental cost 1.135169e+07, Mismatch? N
+[INFO DPL-0338] End of pass, Total cost is 1.135169e+07.
+[INFO DPL-0327] Pass   2 of random improver; improvement in cost is 1.72 percent.
+[INFO DPL-0332] End of pass, Generator random called 9900 times.
+[INFO DPL-0335] Generator random, Cumulative attempts 29700, swaps 1966, moves 12752 since last reset.
+[INFO DPL-0333] End of pass, Objective hpwl, Initial cost 1.135169e+07, Scratch cost 1.120388e+07, Incremental cost 1.120388e+07, Mismatch? N
+[INFO DPL-0338] End of pass, Total cost is 1.120388e+07.
+[INFO DPL-0327] Pass   3 of random improver; improvement in cost is 1.30 percent.
+[INFO DPL-0332] End of pass, Generator random called 9900 times.
+[INFO DPL-0335] Generator random, Cumulative attempts 39600, swaps 2632, moves 16720 since last reset.
+[INFO DPL-0333] End of pass, Objective hpwl, Initial cost 1.120388e+07, Scratch cost 1.114803e+07, Incremental cost 1.114803e+07, Mismatch? N
+[INFO DPL-0338] End of pass, Total cost is 1.114803e+07.
+[INFO DPL-0327] Pass   4 of random improver; improvement in cost is 0.50 percent.
+[INFO DPL-0328] End of random improver; improvement is 6.278183 percent.
+[INFO DPL-0380] Cell flipping.
+[INFO DPL-0382] Changed 0 cell orientations for row compatibility.
+[INFO DPL-0383] Performed 120 cell flips.
+[INFO DPL-0384] End of flipping; objective is 1.095110e+07, improvement is 1.77 percent.
+[INFO DPL-0313] Found 0 cells in wrong regions.
+[INFO DPL-0315] Found 0 row alignment problems.
+[INFO DPL-0314] Found 0 site alignment problems.
+[INFO DPL-0311] Found 0 overlaps between adjacent cells.
+[INFO DPL-0312] Found 0 edge spacing violations and 0 padding violations.
+Detailed Improvement Results
+------------------------------------------
+Original HPWL            12510.5 u (    6250.4,     6260.2)
+Final HPWL               10955.5 u (    5152.9,     5802.6)
+Delta HPWL                 -12.4 % (     -17.6,       -7.3)
+
+[INFO DPL-0020] Mirrored 43 instances
+[INFO DPL-0021] HPWL before           10955.5 u
+[INFO DPL-0022] HPWL after            10950.7 u
+[INFO DPL-0023] HPWL delta               -0.0 %
+[INFO FLW-0012] Placement violations .
+estimate_parasitics -placement
+Report metrics stage 3, detailed place...
+
+==========================================================================
+detailed place report_design_area
+--------------------------------------------------------------------------
+Design area 4274 um^2 13% utilization.
+write_db ./results/sky130hd/exp_fixed_point/base/3_5_place_dp.odb
+Log                        Elapsed/s Peak Memory/MB  sha1sum .odb [0:20)
+3_5_place_dp                       0            123 de186a2184ae7645ea44
+cp ./results/sky130hd/exp_fixed_point/base/3_5_place_dp.odb ./results/sky130hd/exp_fixed_point/base/3_place.odb
+cp ./results/sky130hd/exp_fixed_point/base/2_floorplan.sdc ./results/sky130hd/exp_fixed_point/base/3_place.sdc
+/home/kyash/OpenROAD-flow-scripts-master/flow/scripts/flow.sh 4_1_cts cts
+Running cts.tcl, stage 4_1_cts
+read_liberty /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_db ./results/sky130hd/exp_fixed_point/base/3_place.odb
+read_sdc ./results/sky130hd/exp_fixed_point/base/3_place.sdc
+source /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/setRC.tcl
+clock_tree_synthesis -sink_clustering_enable -repair_clock_nets
+[INFO CTS-0050] Root buffer is sky130_fd_sc_hd__clkbuf_16.
+[INFO CTS-0051] Sink buffer is sky130_fd_sc_hd__clkbuf_16.
+[INFO CTS-0052] The following clock buffers will be used for CTS:
+                    sky130_fd_sc_hd__clkbuf_16
+[INFO CTS-0049] Characterization buffer is sky130_fd_sc_hd__clkbuf_16.
+[INFO CTS-0007] Net "clk" found for clock "clk".
+[INFO CTS-0010]  Clock net "clk" has 37 sinks.
+[INFO CTS-0008] TritonCTS found 1 clock nets.
+[INFO CTS-0097] Characterization used 1 buffer(s) types.
+[INFO CTS-0201] 0 blockages from hard placement blockages and placed macros will be used.
+[INFO CTS-0027] Generating H-Tree topology for net clk.
+[INFO CTS-0028]  Total number of sinks: 37.
+[INFO CTS-0090]  Sinks will be clustered based on buffer max cap.
+[INFO CTS-0030]  Number of static layers: 0.
+[INFO CTS-0020]  Wire segment unit: 13600  dbu (13 um).
+[INFO CTS-0023]  Original sink region: [(78465, 118380), (202665, 202580)].
+[INFO CTS-0024]  Normalized sink region: [(5.76949, 8.70441), (14.9018, 14.8956)].
+[INFO CTS-0025]     Width:  9.1324.
+[INFO CTS-0026]     Height: 6.1912.
+ Level 1
+    Direction: Horizontal
+    Sinks per sub-region: 19
+    Sub-region size: 4.5662 X 6.1912
+[INFO CTS-0034]     Segment length (rounded): 2.
+ Level 2
+    Direction: Vertical
+    Sinks per sub-region: 10
+    Sub-region size: 4.5662 X 3.0956
+[INFO CTS-0034]     Segment length (rounded): 1.
+[INFO CTS-0032]  Stop criterion found. Max number of sinks is 15.
+[INFO CTS-0035]  Number of sinks covered: 37.
+[INFO CTS-0018]     Created 5 clock buffers.
+[INFO CTS-0012]     Minimum number of buffers in the clock path: 2.
+[INFO CTS-0013]     Maximum number of buffers in the clock path: 2.
+[INFO CTS-0015]     Created 5 clock nets.
+[INFO CTS-0016]     Fanout distribution for the current clock = 6:1, 8:1, 10:1, 13:1..
+[INFO CTS-0017]     Max level of the clock tree: 2.
+[INFO CTS-0098] Clock net "clk"
+[INFO CTS-0099]  Sinks 40
+[INFO CTS-0100]  Leaf buffers 0
+[INFO CTS-0101]  Average sink wire length 175.34 um
+[INFO CTS-0102]  Path depth 2 - 2
+[INFO CTS-0207]  Dummy loads inserted 3
+estimate_parasitics -placement
+[INFO DPL-0005] Max displacement: +/- 500 sites horizontally, +/- 100 rows vertically.
+Movements Summary
+---------------------------------------
+Total cells:                     503
+Diamond Move Success:            503 (100.00%)
+Diamond Move Failure:              0
+Rip-up and replace Success:        0 (  0.00% of diamond failures)
+Rip-up and replace Failure:        0
+Total Placement Failures:          0
+---------------------------------------
+Placement Analysis
+---------------------------------
+total displacement         52.1 u
+average displacement        0.1 u
+max displacement            4.6 u
+original HPWL           11247.7 u
+legalized HPWL          11479.7 u
+delta HPWL                    2 %
+
+estimate_parasitics -placement
+repair_timing -setup_margin 0 -hold_margin 0 -repair_tns 100 -match_cell_footprint -verbose
+[INFO RSZ-0100] Repair move sequence: UnbufferMove SizeUpMove SwapPinsMove BufferMove CloneMove SplitLoadMove 
+[INFO RSZ-0098] No setup violations found
+[INFO RSZ-0033] No hold violations found.
+[INFO DPL-0005] Max displacement: +/- 500 sites horizontally, +/- 100 rows vertically.
+Movements Summary
+---------------------------------------
+Total cells:                     503
+Diamond Move Success:            503 (100.00%)
+Diamond Move Failure:              0
+Rip-up and replace Success:        0 (  0.00% of diamond failures)
+Rip-up and replace Failure:        0
+Total Placement Failures:          0
+---------------------------------------
+Placement Analysis
+---------------------------------
+total displacement          0.0 u
+average displacement        0.0 u
+max displacement            0.0 u
+original HPWL           11479.7 u
+legalized HPWL          11479.7 u
+delta HPWL                    0 %
+
+Report metrics stage 4, cts final...
+
+==========================================================================
+cts final report_design_area
+--------------------------------------------------------------------------
+Design area 4420 um^2 14% utilization.
+write_db ./results/sky130hd/exp_fixed_point/base/4_1_cts.odb
+write_sdc -no_timestamp ./results/sky130hd/exp_fixed_point/base/4_cts.sdc
+Log                        Elapsed/s Peak Memory/MB  sha1sum .odb [0:20)
+4_1_cts                            1            147 aff38d0d64b5f497dc66
+cp ./results/sky130hd/exp_fixed_point/base/4_1_cts.odb ./results/sky130hd/exp_fixed_point/base/4_cts.odb
+/home/kyash/OpenROAD-flow-scripts-master/flow/scripts/flow.sh 5_1_grt global_route
+Running global_route.tcl, stage 5_1_grt
+read_liberty /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_db ./results/sky130hd/exp_fixed_point/base/4_cts.odb
+read_sdc ./results/sky130hd/exp_fixed_point/base/4_cts.sdc
+source /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/setRC.tcl
+pin_access
+[INFO DRT-0149] Reading tech and libs.
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer mcon
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer mcon
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer via
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer via
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer via2
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer via2
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer via3
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer via3
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer via4
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer via4
+
+Units:                1000
+Number of layers:     13
+Number of macros:     441
+Number of vias:       29
+Number of viarulegen: 25
+
+[INFO DRT-0150] Reading design.
+
+Design:                   exp_fixed_point
+Die area:                 ( 0 0 ) ( 240000 240000 )
+Number of track patterns: 12
+Number of DEF vias:       0
+Number of components:     905
+Number of terminals:      29
+Number of snets:          2
+Number of nets:           522
+
+[INFO DRT-0167] List of default vias:
+  Layer via
+    default via: M1M2_PR
+  Layer via2
+    default via: M2M3_PR
+  Layer via3
+    default via: M3M4_PR
+  Layer via4
+    default via: M4M5_PR
+[INFO DRT-0162] Library cell analysis.
+[INFO DRT-0163] Instance analysis.
+[INFO DRT-0164] Number of unique instances = 110.
+[INFO DRT-0168] Init region query.
+[INFO DRT-0024]   Complete FR_MASTERSLICE.
+[INFO DRT-0024]   Complete Fr_VIA.
+[INFO DRT-0024]   Complete li1.
+[INFO DRT-0024]   Complete mcon.
+[INFO DRT-0024]   Complete met1.
+[INFO DRT-0024]   Complete via.
+[INFO DRT-0024]   Complete met2.
+[INFO DRT-0024]   Complete via2.
+[INFO DRT-0024]   Complete met3.
+[INFO DRT-0024]   Complete via3.
+[INFO DRT-0024]   Complete met4.
+[INFO DRT-0024]   Complete via4.
+[INFO DRT-0024]   Complete met5.
+[INFO DRT-0033] FR_MASTERSLICE shape region query size = 0.
+[INFO DRT-0033] FR_VIA shape region query size = 0.
+[INFO DRT-0033] li1 shape region query size = 13672.
+[INFO DRT-0033] mcon shape region query size = 7324.
+[INFO DRT-0033] met1 shape region query size = 2665.
+[INFO DRT-0033] via shape region query size = 2145.
+[INFO DRT-0033] met2 shape region query size = 1306.
+[INFO DRT-0033] via2 shape region query size = 1716.
+[INFO DRT-0033] met3 shape region query size = 1295.
+[INFO DRT-0033] via3 shape region query size = 1716.
+[INFO DRT-0033] met4 shape region query size = 527.
+[INFO DRT-0033] via4 shape region query size = 85.
+[INFO DRT-0033] met5 shape region query size = 111.
+[INFO DRT-0165] Start pin access.
+[INFO DRT-0078]   Complete 894 pins.
+[INFO DRT-0079]   Complete 100 unique inst patterns.
+[INFO DRT-0081]   Complete 110 unique inst patterns.
+[INFO DRT-0084]   Complete 346 groups.
+#scanned instances     = 905
+#unique  instances     = 110
+#stdCellGenAp          = 3528
+#stdCellValidPlanarAp  = 28
+#stdCellValidViaAp     = 2770
+#stdCellPinNoAp        = 0
+#stdCellPinCnt         = 1827
+#instTermValidViaApCnt = 0
+#macroGenAp            = 0
+#macroValidPlanarAp    = 0
+#macroValidViaAp       = 0
+#macroNoAp             = 0
+[INFO DRT-0166] Complete pin access.
+[INFO DRT-0267] cpu time = 00:00:51, elapsed time = 00:00:04, memory = 129.37 (MB), peak = 129.37 (MB)
+global_route -congestion_report_file ./reports/sky130hd/exp_fixed_point/base/congestion.rpt -congestion_iterations 30 -congestion_report_iter_step 5 -verbose
+[INFO GRT-0020] Min routing layer: met1
+[INFO GRT-0021] Max routing layer: met5
+[INFO GRT-0022] Global adjustment: 0%
+[INFO GRT-0023] Grid origin: (0, 0)
+[INFO GRT-0088] Layer li1     Track-Pitch = 0.4600  line-2-Via Pitch: 0.3400
+[INFO GRT-0088] Layer met1    Track-Pitch = 0.3400  line-2-Via Pitch: 0.3400
+[INFO GRT-0088] Layer met2    Track-Pitch = 0.4600  line-2-Via Pitch: 0.3500
+[INFO GRT-0088] Layer met3    Track-Pitch = 0.6800  line-2-Via Pitch: 0.6150
+[INFO GRT-0088] Layer met4    Track-Pitch = 0.9200  line-2-Via Pitch: 1.0400
+[INFO GRT-0088] Layer met5    Track-Pitch = 3.4000  line-2-Via Pitch: 3.1100
+[INFO GRT-0003] Macros: 0
+[INFO GRT-0004] Blockages: 578
+[INFO GRT-0019] Found 6 clock nets.
+[INFO GRT-0001] Minimum degree: 2
+[INFO GRT-0002] Maximum degree: 48
+
+[INFO GRT-0053] Routing resources analysis:
+          Routing      Original      Derated      Resource
+Layer     Direction    Resources     Resources    Reduction (%)
+---------------------------------------------------------------
+li1        Vertical            0             0          0.00%
+met1       Horizontal      19633         15322          21.96%
+met2       Vertical        15796         12331          21.94%
+met3       Horizontal      11194          8764          21.71%
+met4       Vertical         7816          5831          25.40%
+met5       Horizontal       1972          1188          39.76%
+---------------------------------------------------------------
+
+[INFO GRT-0197] Via related to pin nodes: 2977
+[INFO GRT-0198] Via related Steiner nodes: 73
+[INFO GRT-0199] Via filling finished.
+[INFO GRT-0111] Final number of vias: 3732
+[INFO GRT-0112] Final usage 3D: 13305
+
+[INFO GRT-0096] Final congestion report:
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+---------------------------------------------------------------------------------------
+li1                  0             0            0.00%             0 /  0 /  0
+met1             15322          1027            6.70%             0 /  0 /  0
+met2             12331           945            7.66%             0 /  0 /  0
+met3              8764            81            0.92%             0 /  0 /  0
+met4              5831            56            0.96%             0 /  0 /  0
+met5              1188             0            0.00%             0 /  0 /  0
+---------------------------------------------------------------------------------------
+Total            43436          2109            4.86%             0 /  0 /  0
+
+[INFO GRT-0018] Total wirelength: 23508 um
+[INFO GRT-0014] Routed nets: 513
+[INFO GRT-0303] Global routing runtime = 00:00:00
+estimate_parasitics -global_routing
+Perform buffer insertion and gate resizing...
+repair_design -verbose
+Iteration |   Area    | Resized | Buffers | Nets repaired | Remaining
+---------------------------------------------------------------------
+        0 |     +0.0% |       0 |       0 |             0 |       531
+       10 |     +0.0% |       0 |       0 |             0 |       521
+       20 |     +0.0% |       0 |       0 |             0 |       511
+       30 |     +0.0% |       0 |       0 |             0 |       501
+       40 |     +0.0% |       0 |       0 |             0 |       491
+       50 |     +0.0% |       0 |       0 |             0 |       481
+       60 |     +0.0% |       0 |       0 |             0 |       471
+       70 |     +0.0% |       0 |       0 |             0 |       461
+       80 |     +0.0% |       0 |       0 |             0 |       451
+       90 |     +0.0% |       0 |       0 |             0 |       441
+      100 |     +0.0% |       0 |       0 |             0 |       431
+      110 |     +0.0% |       0 |       0 |             0 |       421
+      120 |     +0.0% |       0 |       0 |             0 |       411
+      130 |     +0.0% |       0 |       0 |             0 |       401
+      140 |     +0.0% |       0 |       0 |             0 |       391
+      150 |     +0.0% |       0 |       0 |             0 |       381
+      160 |     +0.0% |       0 |       0 |             0 |       371
+      170 |     +0.0% |       0 |       0 |             0 |       361
+      180 |     +0.0% |       0 |       0 |             0 |       351
+      190 |     +0.0% |       0 |       0 |             0 |       341
+      200 |     +0.0% |       0 |       0 |             0 |       331
+      210 |     +0.0% |       0 |       0 |             0 |       321
+      220 |     +0.0% |       0 |       0 |             0 |       311
+      230 |     +0.0% |       0 |       0 |             0 |       301
+      240 |     +0.0% |       0 |       0 |             0 |       291
+[WARNING RSZ-0104] Net _475_ only has one pin. Check if it is intended to be dangling.
+      250 |     +0.0% |       0 |       0 |             0 |       281
+[WARNING RSZ-0104] Net _473_ only has one pin. Check if it is intended to be dangling.
+      260 |     +0.0% |       0 |       0 |             0 |       271
+      270 |     +0.0% |       0 |       0 |             0 |       261
+      280 |     +0.0% |       0 |       0 |             0 |       251
+      290 |     +0.0% |       0 |       0 |             0 |       241
+      300 |     +0.0% |       0 |       0 |             0 |       231
+      310 |     +0.0% |       0 |       0 |             0 |       221
+      320 |     +0.0% |       0 |       0 |             0 |       211
+[WARNING RSZ-0104] Net _481_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _480_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _479_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _478_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _477_ only has one pin. Check if it is intended to be dangling.
+      330 |     +0.0% |       0 |       0 |             0 |       201
+[WARNING RSZ-0104] Net _476_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _474_ only has one pin. Check if it is intended to be dangling.
+      340 |     +0.0% |       0 |       0 |             0 |       191
+      350 |     +0.0% |       0 |       0 |             0 |       181
+      360 |     +0.0% |       0 |       0 |             0 |       171
+      370 |     +0.0% |       0 |       0 |             0 |       161
+      380 |     +0.0% |       0 |       0 |             0 |       151
+      390 |     +0.0% |       0 |       0 |             0 |       141
+      400 |     +0.0% |       0 |       0 |             0 |       131
+      410 |     +0.0% |       0 |       0 |             0 |       121
+      420 |     +0.0% |       0 |       0 |             0 |       111
+      430 |     +0.0% |       0 |       0 |             0 |       101
+      440 |     +0.0% |       0 |       0 |             0 |        91
+      450 |     +0.0% |       0 |       0 |             0 |        81
+      460 |     +0.0% |       0 |       0 |             0 |        71
+      470 |     +0.0% |       0 |       0 |             0 |        61
+      480 |     +0.0% |       0 |       0 |             0 |        51
+      490 |     +0.0% |       0 |       0 |             0 |        41
+      500 |     +0.0% |       0 |       0 |             0 |        31
+      510 |     +0.0% |       0 |       0 |             0 |        21
+      520 |     +0.0% |       0 |       0 |             0 |        11
+      530 |     +0.0% |       0 |       0 |             0 |         1
+    final |     +0.0% |       0 |       0 |             0 |         0
+---------------------------------------------------------------------
+global_route -start_incremental
+detailed_placement
+[INFO DPL-0005] Max displacement: +/- 500 sites horizontally, +/- 100 rows vertically.
+Movements Summary
+---------------------------------------
+Total cells:                     503
+Diamond Move Success:            503 (100.00%)
+Diamond Move Failure:              0
+Rip-up and replace Success:        0 (  0.00% of diamond failures)
+Rip-up and replace Failure:        0
+Total Placement Failures:          0
+---------------------------------------
+Placement Analysis
+---------------------------------
+total displacement          0.0 u
+average displacement        0.0 u
+max displacement            0.0 u
+original HPWL           11479.7 u
+legalized HPWL          11479.7 u
+delta HPWL                    0 %
+
+global_route -end_incremental -congestion_report_file ./reports/sky130hd/exp_fixed_point/base/congestion_post_repair_design.rpt
+Repair setup and hold violations...
+estimate_parasitics -global_routing
+repair_timing -setup_margin 0 -hold_margin 0 -repair_tns 100 -verbose
+[INFO RSZ-0100] Repair move sequence: UnbufferMove SizeUpMove SwapPinsMove BufferMove CloneMove SplitLoadMove 
+[INFO RSZ-0098] No setup violations found
+[INFO RSZ-0033] No hold violations found.
+global_route -start_incremental
+detailed_placement
+[INFO DPL-0005] Max displacement: +/- 500 sites horizontally, +/- 100 rows vertically.
+Movements Summary
+---------------------------------------
+Total cells:                     503
+Diamond Move Success:            503 (100.00%)
+Diamond Move Failure:              0
+Rip-up and replace Success:        0 (  0.00% of diamond failures)
+Rip-up and replace Failure:        0
+Total Placement Failures:          0
+---------------------------------------
+Placement Analysis
+---------------------------------
+total displacement          0.0 u
+average displacement        0.0 u
+max displacement            0.0 u
+original HPWL           11479.7 u
+legalized HPWL          11479.7 u
+delta HPWL                    0 %
+
+global_route -end_incremental -congestion_report_file ./reports/sky130hd/exp_fixed_point/base/congestion_post_repair_timing.rpt
+global_route -start_incremental
+global_route -end_incremental -congestion_report_file ./reports/sky130hd/exp_fixed_point/base/congestion_post_recover_power.rpt
+Repair antennas...
+[INFO GRT-0012] Found 0 antenna violations.
+[INFO ANT-0002] Found 0 net violations.
+[INFO ANT-0001] Found 0 pin violations.
+Estimate parasitics...
+estimate_parasitics -global_routing
+Report metrics stage 5, global route...
+
+==========================================================================
+global route report_design_area
+--------------------------------------------------------------------------
+Design area 4420 um^2 14% utilization.
+[INFO FLW-0007] clock clk period 3.000000
+[INFO FLW-0008] Clock clk period 2.628
+[INFO FLW-0009] Clock clk slack 0.234
+[INFO FLW-0011] Path endpoint path count 59
+write_db ./results/sky130hd/exp_fixed_point/base/5_1_grt.odb
+write_sdc -no_timestamp ./results/sky130hd/exp_fixed_point/base/5_1_grt.sdc
+Log                        Elapsed/s Peak Memory/MB  sha1sum .odb [0:20)
+5_1_grt                            5            241 a3b84b25a86ad4e785d9
+/home/kyash/OpenROAD-flow-scripts-master/flow/scripts/flow.sh 5_2_route detail_route
+Running detail_route.tcl, stage 5_2_route
+read_liberty /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_db ./results/sky130hd/exp_fixed_point/base/5_1_grt.odb
+read_sdc ./results/sky130hd/exp_fixed_point/base/5_1_grt.sdc
+source /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/setRC.tcl
+detailed_route -output_drc ./reports/sky130hd/exp_fixed_point/base/5_route_drc.rpt -output_maze ./results/sky130hd/exp_fixed_point/base/maze.log -droute_end_iter 64 -verbose 1 -drc_report_iter_step 5
+[INFO DRT-0149] Reading tech and libs.
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer mcon
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer mcon
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer via
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer via
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer via2
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer via2
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer via3
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer via3
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer via4
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer via4
+
+Units:                1000
+Number of layers:     13
+Number of macros:     441
+Number of vias:       29
+Number of viarulegen: 25
+
+[INFO DRT-0150] Reading design.
+
+Design:                   exp_fixed_point
+Die area:                 ( 0 0 ) ( 240000 240000 )
+Number of track patterns: 12
+Number of DEF vias:       0
+Number of components:     905
+Number of terminals:      29
+Number of snets:          2
+Number of nets:           522
+
+[INFO DRT-0167] List of default vias:
+  Layer via
+    default via: M1M2_PR
+  Layer via2
+    default via: M2M3_PR
+  Layer via3
+    default via: M3M4_PR
+  Layer via4
+    default via: M4M5_PR
+[INFO DRT-0162] Library cell analysis.
+[INFO DRT-0163] Instance analysis.
+[INFO DRT-0164] Number of unique instances = 110.
+[INFO DRT-0168] Init region query.
+[INFO DRT-0024]   Complete FR_MASTERSLICE.
+[INFO DRT-0024]   Complete Fr_VIA.
+[INFO DRT-0024]   Complete li1.
+[INFO DRT-0024]   Complete mcon.
+[INFO DRT-0024]   Complete met1.
+[INFO DRT-0024]   Complete via.
+[INFO DRT-0024]   Complete met2.
+[INFO DRT-0024]   Complete via2.
+[INFO DRT-0024]   Complete met3.
+[INFO DRT-0024]   Complete via3.
+[INFO DRT-0024]   Complete met4.
+[INFO DRT-0024]   Complete via4.
+[INFO DRT-0024]   Complete met5.
+[INFO DRT-0033] FR_MASTERSLICE shape region query size = 0.
+[INFO DRT-0033] FR_VIA shape region query size = 0.
+[INFO DRT-0033] li1 shape region query size = 13672.
+[INFO DRT-0033] mcon shape region query size = 7324.
+[INFO DRT-0033] met1 shape region query size = 2665.
+[INFO DRT-0033] via shape region query size = 2145.
+[INFO DRT-0033] met2 shape region query size = 1306.
+[INFO DRT-0033] via2 shape region query size = 1716.
+[INFO DRT-0033] met3 shape region query size = 1295.
+[INFO DRT-0033] via3 shape region query size = 1716.
+[INFO DRT-0033] met4 shape region query size = 527.
+[INFO DRT-0033] via4 shape region query size = 85.
+[INFO DRT-0033] met5 shape region query size = 111.
+[INFO DRT-0165] Start pin access.
+[INFO DRT-0078]   Complete 894 pins.
+[INFO DRT-0079]   Complete 100 unique inst patterns.
+[INFO DRT-0081]   Complete 110 unique inst patterns.
+[INFO DRT-0084]   Complete 346 groups.
+#scanned instances     = 905
+#unique  instances     = 110
+#stdCellGenAp          = 3528
+#stdCellValidPlanarAp  = 28
+#stdCellValidViaAp     = 2770
+#stdCellPinNoAp        = 0
+#stdCellPinCnt         = 1827
+#instTermValidViaApCnt = 0
+#macroGenAp            = 0
+#macroValidPlanarAp    = 0
+#macroValidViaAp       = 0
+#macroNoAp             = 0
+[INFO DRT-0166] Complete pin access.
+[INFO DRT-0267] cpu time = 00:01:06, elapsed time = 00:00:05, memory = 211.36 (MB), peak = 211.36 (MB)
+
+[INFO DRT-0157] Number of guides:     4049
+
+[INFO DRT-0169] Post process guides.
+[INFO DRT-0176] GCELLGRID X 0 DO 34 STEP 6900 ;
+[INFO DRT-0177] GCELLGRID Y 0 DO 34 STEP 6900 ;
+[INFO DRT-0028]   Complete FR_MASTERSLICE.
+[INFO DRT-0028]   Complete Fr_VIA.
+[INFO DRT-0028]   Complete li1.
+[INFO DRT-0028]   Complete mcon.
+[INFO DRT-0028]   Complete met1.
+[INFO DRT-0028]   Complete via.
+[INFO DRT-0028]   Complete met2.
+[INFO DRT-0028]   Complete via2.
+[INFO DRT-0028]   Complete met3.
+[INFO DRT-0028]   Complete via3.
+[INFO DRT-0028]   Complete met4.
+[INFO DRT-0028]   Complete via4.
+[INFO DRT-0028]   Complete met5.
+[INFO DRT-0178] Init guide query.
+[INFO DRT-0035]   Complete FR_MASTERSLICE (guide).
+[INFO DRT-0035]   Complete Fr_VIA (guide).
+[INFO DRT-0035]   Complete li1 (guide).
+[INFO DRT-0035]   Complete mcon (guide).
+[INFO DRT-0035]   Complete met1 (guide).
+[INFO DRT-0035]   Complete via (guide).
+[INFO DRT-0035]   Complete met2 (guide).
+[INFO DRT-0035]   Complete via2 (guide).
+[INFO DRT-0035]   Complete met3 (guide).
+[INFO DRT-0035]   Complete via3 (guide).
+[INFO DRT-0035]   Complete met4 (guide).
+[INFO DRT-0035]   Complete via4 (guide).
+[INFO DRT-0035]   Complete met5 (guide).
+[INFO DRT-0036] FR_MASTERSLICE guide region query size = 0.
+[INFO DRT-0036] FR_VIA guide region query size = 0.
+[INFO DRT-0036] li1 guide region query size = 1488.
+[INFO DRT-0036] mcon guide region query size = 0.
+[INFO DRT-0036] met1 guide region query size = 1258.
+[INFO DRT-0036] via guide region query size = 0.
+[INFO DRT-0036] met2 guide region query size = 597.
+[INFO DRT-0036] via2 guide region query size = 0.
+[INFO DRT-0036] met3 guide region query size = 38.
+[INFO DRT-0036] via3 guide region query size = 0.
+[INFO DRT-0036] met4 guide region query size = 13.
+[INFO DRT-0036] via4 guide region query size = 0.
+[INFO DRT-0036] met5 guide region query size = 0.
+[INFO DRT-0179] Init gr pin query.
+[INFO DRT-0267] cpu time = 00:00:00, elapsed time = 00:00:00, memory = 212.11 (MB), peak = 212.11 (MB)
+[INFO DRT-0245] skipped writing guide updates to database.
+[INFO DRT-0181] Start track assignment.
+[INFO DRT-0184] Done with 2098 vertical wires in 1 frboxes and 1296 horizontal wires in 1 frboxes.
+[INFO DRT-0186] Done with 255 vertical wires in 1 frboxes and 432 horizontal wires in 1 frboxes.
+[INFO DRT-0182] Complete track assignment.
+[INFO DRT-0267] cpu time = 00:00:00, elapsed time = 00:00:00, memory = 227.01 (MB), peak = 227.01 (MB)
+[INFO DRT-0187] Start routing data preparation.
+[INFO DRT-0267] cpu time = 00:00:00, elapsed time = 00:00:00, memory = 227.13 (MB), peak = 227.13 (MB)
+[INFO DRT-0194] Start detail routing.
+[INFO DRT-0195] Start 0th optimization iteration.
+    Completing 10% with 0 violations.
+    elapsed time = 00:00:00, memory = 227.51 (MB).
+    Completing 20% with 0 violations.
+    elapsed time = 00:00:00, memory = 227.63 (MB).
+    Completing 30% with 0 violations.
+    elapsed time = 00:00:00, memory = 249.30 (MB).
+    Completing 40% with 56 violations.
+    elapsed time = 00:00:01, memory = 242.66 (MB).
+    Completing 50% with 56 violations.
+    elapsed time = 00:00:01, memory = 280.91 (MB).
+    Completing 60% with 56 violations.
+    elapsed time = 00:00:02, memory = 265.54 (MB).
+    Completing 70% with 66 violations.
+    elapsed time = 00:00:02, memory = 292.79 (MB).
+    Completing 80% with 66 violations.
+    elapsed time = 00:00:02, memory = 329.79 (MB).
+    Completing 90% with 168 violations.
+    elapsed time = 00:00:09, memory = 365.60 (MB).
+    Completing 100% with 300 violations.
+    elapsed time = 00:00:17, memory = 367.51 (MB).
+[INFO DRT-0199]   Number of violations = 401.
+Viol/Layer         li1   met1   met2   met3
+Metal Spacing        0     59     10      2
+Recheck              3     64     28      6
+Short                0    221      8      0
+[INFO DRT-0267] cpu time = 00:00:19, elapsed time = 00:00:17, memory = 729.51 (MB), peak = 729.51 (MB)
+Total wire length = 15609 um.
+Total wire length on LAYER li1 = 0 um.
+Total wire length on LAYER met1 = 7618 um.
+Total wire length on LAYER met2 = 7069 um.
+Total wire length on LAYER met3 = 564 um.
+Total wire length on LAYER met4 = 357 um.
+Total wire length on LAYER met5 = 0 um.
+Total number of vias = 3789.
+Up-via summary (total 3789):
+
+-----------------------
+ FR_MASTERSLICE       0
+            li1    1837
+           met1    1865
+           met2      65
+           met3      22
+           met4       0
+-----------------------
+               3789
+
+
+[INFO DRT-0195] Start 1st optimization iteration.
+    Completing 10% with 401 violations.
+    elapsed time = 00:00:00, memory = 729.51 (MB).
+    Completing 20% with 401 violations.
+    elapsed time = 00:00:00, memory = 763.51 (MB).
+    Completing 30% with 404 violations.
+    elapsed time = 00:00:00, memory = 763.51 (MB).
+    Completing 40% with 404 violations.
+    elapsed time = 00:00:00, memory = 771.01 (MB).
+    Completing 50% with 404 violations.
+    elapsed time = 00:00:01, memory = 808.88 (MB).
+    Completing 60% with 369 violations.
+    elapsed time = 00:00:01, memory = 808.88 (MB).
+    Completing 70% with 369 violations.
+    elapsed time = 00:00:01, memory = 855.01 (MB).
+    Completing 80% with 268 violations.
+    elapsed time = 00:00:02, memory = 835.17 (MB).
+    Completing 90% with 268 violations.
+    elapsed time = 00:00:02, memory = 840.80 (MB).
+    Completing 100% with 199 violations.
+    elapsed time = 00:00:10, memory = 857.00 (MB).
+[INFO DRT-0199]   Number of violations = 199.
+Viol/Layer        met1   met2   met3
+Metal Spacing       25      2      3
+Short              165      4      0
+[INFO DRT-0267] cpu time = 00:00:13, elapsed time = 00:00:10, memory = 858.00 (MB), peak = 893.17 (MB)
+Total wire length = 15448 um.
+Total wire length on LAYER li1 = 0 um.
+Total wire length on LAYER met1 = 7479 um.
+Total wire length on LAYER met2 = 7057 um.
+Total wire length on LAYER met3 = 605 um.
+Total wire length on LAYER met4 = 305 um.
+Total wire length on LAYER met5 = 0 um.
+Total number of vias = 3795.
+Up-via summary (total 3795):
+
+-----------------------
+ FR_MASTERSLICE       0
+            li1    1847
+           met1    1860
+           met2      71
+           met3      17
+           met4       0
+-----------------------
+               3795
+
+
+[INFO DRT-0195] Start 2nd optimization iteration.
+    Completing 10% with 199 violations.
+    elapsed time = 00:00:00, memory = 858.00 (MB).
+    Completing 20% with 199 violations.
+    elapsed time = 00:00:00, memory = 895.62 (MB).
+    Completing 30% with 216 violations.
+    elapsed time = 00:00:02, memory = 872.21 (MB).
+    Completing 40% with 216 violations.
+    elapsed time = 00:00:02, memory = 872.21 (MB).
+    Completing 50% with 216 violations.
+    elapsed time = 00:00:06, memory = 872.27 (MB).
+    Completing 60% with 275 violations.
+    elapsed time = 00:00:06, memory = 872.27 (MB).
+    Completing 70% with 275 violations.
+    elapsed time = 00:00:06, memory = 902.40 (MB).
+    Completing 80% with 240 violations.
+    elapsed time = 00:00:08, memory = 914.40 (MB).
+    Completing 90% with 240 violations.
+    elapsed time = 00:00:08, memory = 914.40 (MB).
+    Completing 100% with 258 violations.
+    elapsed time = 00:00:11, memory = 956.18 (MB).
+[INFO DRT-0199]   Number of violations = 258.
+Viol/Layer        met1   met2
+Metal Spacing       41      6
+Short              197     14
+[INFO DRT-0267] cpu time = 00:00:14, elapsed time = 00:00:11, memory = 956.30 (MB), peak = 964.15 (MB)
+Total wire length = 15453 um.
+Total wire length on LAYER li1 = 0 um.
+Total wire length on LAYER met1 = 7452 um.
+Total wire length on LAYER met2 = 7060 um.
+Total wire length on LAYER met3 = 630 um.
+Total wire length on LAYER met4 = 310 um.
+Total wire length on LAYER met5 = 0 um.
+Total number of vias = 3797.
+Up-via summary (total 3797):
+
+-----------------------
+ FR_MASTERSLICE       0
+            li1    1842
+           met1    1854
+           met2      84
+           met3      17
+           met4       0
+-----------------------
+               3797
+
+
+[INFO DRT-0195] Start 3rd optimization iteration.
+    Completing 10% with 258 violations.
+    elapsed time = 00:00:00, memory = 956.30 (MB).
+    Completing 20% with 258 violations.
+    elapsed time = 00:00:00, memory = 956.30 (MB).
+    Completing 30% with 258 violations.
+    elapsed time = 00:00:00, memory = 977.30 (MB).
+    Completing 40% with 234 violations.
+    elapsed time = 00:00:02, memory = 991.43 (MB).
+    Completing 50% with 234 violations.
+    elapsed time = 00:00:02, memory = 991.43 (MB).
+    Completing 60% with 234 violations.
+    elapsed time = 00:00:03, memory = 991.43 (MB).
+    Completing 70% with 227 violations.
+    elapsed time = 00:00:03, memory = 991.43 (MB).
+    Completing 80% with 227 violations.
+    elapsed time = 00:00:03, memory = 1036.05 (MB).
+    Completing 90% with 98 violations.
+    elapsed time = 00:00:08, memory = 1024.35 (MB).
+    Completing 100% with 22 violations.
+    elapsed time = 00:00:12, memory = 1032.14 (MB).
+[INFO DRT-0199]   Number of violations = 22.
+Viol/Layer        met1
+Metal Spacing        8
+Short               14
+[INFO DRT-0267] cpu time = 00:00:13, elapsed time = 00:00:13, memory = 1032.14 (MB), peak = 1069.85 (MB)
+Total wire length = 15374 um.
+Total wire length on LAYER li1 = 0 um.
+Total wire length on LAYER met1 = 6880 um.
+Total wire length on LAYER met2 = 7125 um.
+Total wire length on LAYER met3 = 1013 um.
+Total wire length on LAYER met4 = 353 um.
+Total wire length on LAYER met5 = 0 um.
+Total number of vias = 3899.
+Up-via summary (total 3899):
+
+-----------------------
+ FR_MASTERSLICE       0
+            li1    1843
+           met1    1886
+           met2     149
+           met3      21
+           met4       0
+-----------------------
+               3899
+
+
+[INFO DRT-0195] Start 4th guides tiles iteration.
+    Completing 10% with 22 violations.
+    elapsed time = 00:00:00, memory = 1032.14 (MB).
+    Completing 30% with 22 violations.
+    elapsed time = 00:00:00, memory = 1032.14 (MB).
+    Completing 50% with 22 violations.
+    elapsed time = 00:00:00, memory = 1032.14 (MB).
+    Completing 60% with 22 violations.
+    elapsed time = 00:00:00, memory = 1032.14 (MB).
+    Completing 80% with 0 violations.
+    elapsed time = 00:00:00, memory = 1032.14 (MB).
+    Completing 100% with 0 violations.
+    elapsed time = 00:00:00, memory = 1032.14 (MB).
+[INFO DRT-0199]   Number of violations = 0.
+[INFO DRT-0267] cpu time = 00:00:00, elapsed time = 00:00:00, memory = 1032.14 (MB), peak = 1069.85 (MB)
+Total wire length = 15369 um.
+Total wire length on LAYER li1 = 0 um.
+Total wire length on LAYER met1 = 6877 um.
+Total wire length on LAYER met2 = 7121 um.
+Total wire length on LAYER met3 = 1016 um.
+Total wire length on LAYER met4 = 353 um.
+Total wire length on LAYER met5 = 0 um.
+Total number of vias = 3896.
+Up-via summary (total 3896):
+
+-----------------------
+ FR_MASTERSLICE       0
+            li1    1843
+           met1    1883
+           met2     149
+           met3      21
+           met4       0
+-----------------------
+               3896
+
+
+[INFO DRT-0198] Complete detail routing.
+Total wire length = 15369 um.
+Total wire length on LAYER li1 = 0 um.
+Total wire length on LAYER met1 = 6877 um.
+Total wire length on LAYER met2 = 7121 um.
+Total wire length on LAYER met3 = 1016 um.
+Total wire length on LAYER met4 = 353 um.
+Total wire length on LAYER met5 = 0 um.
+Total number of vias = 3896.
+Up-via summary (total 3896):
+
+-----------------------
+ FR_MASTERSLICE       0
+            li1    1843
+           met1    1883
+           met2     149
+           met3      21
+           met4       0
+-----------------------
+               3896
+
+
+[INFO DRT-0267] cpu time = 00:01:02, elapsed time = 00:00:52, memory = 1032.39 (MB), peak = 1069.85 (MB)
+
+[INFO DRT-0180] Post processing.
+Took 58 seconds: detailed_route -output_drc ./reports/sky130hd/exp_fixed_point/base/5_route_drc.rpt -output_maze ./results/sky130hd/exp_fixed_point/base/maze.log -droute_end_iter 64 -verbose 1 -drc_report_iter_step 5
+[INFO GRT-0012] Found 0 antenna violations.
+[INFO ANT-0002] Found 0 net violations.
+[INFO ANT-0001] Found 0 pin violations.
+[INFO ANT-0002] Found 0 net violations.
+[INFO ANT-0001] Found 0 pin violations.
+Design area 4420 um^2 14% utilization.
+write_db ./results/sky130hd/exp_fixed_point/base/5_2_route.odb
+Log                        Elapsed/s Peak Memory/MB  sha1sum .odb [0:20)
+5_2_route                         59           1069 1b0af7b12f7474a5ae09
+/home/kyash/OpenROAD-flow-scripts-master/flow/scripts/flow.sh 5_3_fillcell fillcell
+Running fillcell.tcl, stage 5_3_fillcell
+read_liberty /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_db ./results/sky130hd/exp_fixed_point/base/5_2_route.odb
+read_sdc ./results/sky130hd/exp_fixed_point/base/5_1_grt.sdc
+source /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/setRC.tcl
+filler_placement "sky130_fd_sc_hd__fill_1 sky130_fd_sc_hd__fill_2 sky130_fd_sc_hd__fill_4 sky130_fd_sc_hd__fill_8"
+[INFO DPL-0001] Placed 3638 filler instances.
+Design area 4420 um^2 14% utilization.
+write_db ./results/sky130hd/exp_fixed_point/base/5_3_fillcell.odb
+Log                        Elapsed/s Peak Memory/MB  sha1sum .odb [0:20)
+5_3_fillcell                       0            122 66385420ac860fd07146
+cp ./results/sky130hd/exp_fixed_point/base/5_3_fillcell.odb ./results/sky130hd/exp_fixed_point/base/5_route.odb
+cp ./results/sky130hd/exp_fixed_point/base/5_1_grt.sdc ./results/sky130hd/exp_fixed_point/base/5_route.sdc
+/home/kyash/OpenROAD-flow-scripts-master/flow/scripts/flow.sh 6_1_fill density_fill
+Running density_fill.tcl, stage 6_1_fill
+read_liberty /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_db ./results/sky130hd/exp_fixed_point/base/5_route.odb
+read_sdc ./results/sky130hd/exp_fixed_point/base/5_route.sdc
+source /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/setRC.tcl
+exec cp ./results/sky130hd/exp_fixed_point/base/5_route.odb ./results/sky130hd/exp_fixed_point/base/6_1_fill.odb
+Log                        Elapsed/s Peak Memory/MB  sha1sum .odb [0:20)
+6_1_fill                           0            119 66385420ac860fd07146
+cp ./results/sky130hd/exp_fixed_point/base/5_route.sdc ./results/sky130hd/exp_fixed_point/base/6_1_fill.sdc
+/home/kyash/OpenROAD-flow-scripts-master/flow/scripts/flow.sh 6_report final_report
+Running final_report.tcl, stage 6_report
+read_liberty /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_db ./results/sky130hd/exp_fixed_point/base/6_1_fill.odb
+read_sdc ./results/sky130hd/exp_fixed_point/base/6_1_fill.sdc
+source /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/setRC.tcl
+write_db ./results/sky130hd/exp_fixed_point/base/6_final.odb
+Deleted 0 routing obstructions
+Warning: master sky130_ef_sc_hd__decap_12 has signal pins but no liberty cell
+[INFO RCX-0431] Defined process_corner X with ext_model_index 0
+[INFO RCX-0029] Defined extraction corner X
+[INFO RCX-0435] Reading extraction model file /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/rcx_patterns.rules ...
+[INFO RCX-0436] RC segment generation exp_fixed_point (max_merge_res 50.0) ...
+[INFO RCX-0040] Final 2231 rc segments
+[INFO RCX-0439] Coupling Cap extraction exp_fixed_point ...
+[INFO RCX-0440] Coupling threshhold is 0.1000 fF, coupling capacitance less than 0.1000 fF will be grounded.
+[INFO RCX-0442] 59% of 4886 wires extracted
+[INFO RCX-0442] 100% of 4886 wires extracted
+[INFO RCX-0045] Extract 522 nets, 2744 rsegs, 2744 caps, 4525 ccs
+[INFO RCX-0443] 522 nets finished
+[INFO PSM-0040] All shapes on net VDD are connected.
+########## IR report #################
+Net              : VDD
+Corner           : default
+Total power      : 1.15e-03 W
+Supply voltage   : 1.80e+00 V
+Worstcase voltage: 1.80e+00 V
+Average voltage  : 1.80e+00 V
+Average IR drop  : 7.27e-06 V
+Worstcase IR drop: 1.72e-04 V
+Percentage drop  : 0.01 %
+######################################
+[INFO PSM-0040] All shapes on net VSS are connected.
+########## IR report #################
+Net              : VSS
+Corner           : default
+Total power      : 1.15e-03 W
+Supply voltage   : 0.00e+00 V
+Worstcase voltage: 1.78e-04 V
+Average voltage  : 7.02e-06 V
+Average IR drop  : 7.02e-06 V
+Worstcase IR drop: 1.78e-04 V
+Percentage drop  : 0.01 %
+######################################
+Cell type report:                       Count       Area
+  Fill cell                              3638   27297.43
+  Tap cell                                402     502.98
+  Clock buffer                              5     125.12
+  Timing Repair Buffer                     39     355.34
+  Inverter                                  9      33.78
+  Clock inverter                            3      21.27
+  Sequential cell                          37     745.72
+  Multi-Input combinational cell          410    2636.28
+  Total                                  4543   31717.92
+Report metrics stage 6, finish...
+
+==========================================================================
+finish report_design_area
+--------------------------------------------------------------------------
+Design area 4420 um^2 14% utilization.
+Skipping GUI image generation.
+Log                        Elapsed/s Peak Memory/MB  sha1sum .odb [0:20)
+6_report                           0            138                  N/A
+cp ./results/sky130hd/exp_fixed_point/base/5_route.sdc ./results/sky130hd/exp_fixed_point/base/6_final.sdc
+cp /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/lef/sky130_fd_sc_hd.tlef ./objects/sky130hd/exp_fixed_point/base/klayout_tech.lef
+/usr/bin/python3 /home/kyash/OpenROAD-flow-scripts-master/flow/util/generate_klayout_tech.py \
+	--template /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/sky130hd.lyt \
+	--output ./objects/sky130hd/exp_fixed_point/base/klayout.lyt \
+	--lef-files ./objects/sky130hd/exp_fixed_point/base/klayout_tech.lef /home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/lef/sky130_fd_sc_hd_merged.lef   \
+	--reference-dir ./results/sky130hd/exp_fixed_point/base \
+	--map-files 
+/usr/bin/python3 /home/kyash/OpenROAD-flow-scripts-master/flow/scripts/run_command.py --log /home/kyash/OpenROAD-flow-scripts-master/flow/logs/sky130hd/exp_fixed_point/base/6_1_merge.log --tee -- \
+        /home/kyash/OpenROAD-flow-scripts-master/flow/scripts/klayout.sh -zz -rd design_name=exp_fixed_point \
+        -rd in_def=./results/sky130hd/exp_fixed_point/base/6_final.def \
+        -rd in_files="/home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/gds/sky130_fd_sc_hd.gds  " \
+        -rd seal_file="" \
+        -rd out_file=./results/sky130hd/exp_fixed_point/base/6_1_merged.gds \
+        -rd tech_file=./objects/sky130hd/exp_fixed_point/base/klayout.lyt \
+        -rd layer_map= \
+        -r /home/kyash/OpenROAD-flow-scripts-master/flow/util/def2stream.py
+KLayout 0.28.16
+[INFO] Reporting cells prior to loading DEF ...
+	/home/kyash/OpenROAD-flow-scripts-master/flow/platforms/sky130hd/gds/sky130_fd_sc_hd.gds
+[INFO] All LEF cells have matching GDS/OAS cells
+[INFO] No orphan cells in the final layout
+cp results/sky130hd/exp_fixed_point/base/6_1_merged.gds results/sky130hd/exp_fixed_point/base/6_final.gds
+./logs/sky130hd/exp_fixed_point/base
+Log                        Elapsed/s Peak Memory/MB  sha1sum .odb [0:20)
+1_1_yosys_canonicalize             0             53 14486b6ddbb80557bbe4
+1_2_yosys                          1             57 cdd899e53a6193a3b797
+1_synth                            0            117 a660b1219fbab5a5b551
+2_1_floorplan                      0            138 af37cc594a40e14fbdda
+2_2_floorplan_macro                0            115 af37cc594a40e14fbdda
+2_3_floorplan_tapcell              0            115 5cb858f5ef7db39dd649
+2_4_floorplan_pdn                  0            119 cfb149bb3be8411a801b
+3_1_place_gp_skip_io               1            117 ccd87791d18627917a65
+3_2_place_iop                      0            116 b2810ec7576e77f43cad
+3_3_place_gp                       1            227 7cdc672a1cce776c6b9e
+3_4_place_resized                  0            137 7cdc672a1cce776c6b9e
+3_5_place_dp                       0            123 de186a2184ae7645ea44
+4_1_cts                            1            147 aff38d0d64b5f497dc66
+5_1_grt                            5            241 a3b84b25a86ad4e785d9
+5_2_route                         59           1069 1b0af7b12f7474a5ae09
+5_3_fillcell                       0            122 66385420ac860fd07146
+6_1_fill                           0            119 66385420ac860fd07146
+6_1_merge                          1            376                  N/A
+6_report                           0            138                  N/A
+Total                             69           1069                     
+
+STDERR:
+Elapsed time: 0:00.63[h:]min:sec. CPU time: user 0.38 sys 0.12 (78%). Peak memory: 141648KB.
+Elapsed time: 0:00.44[h:]min:sec. CPU time: user 0.29 sys 0.04 (73%). Peak memory: 118252KB.
+Elapsed time: 0:00.43[h:]min:sec. CPU time: user 0.30 sys 0.04 (81%). Peak memory: 118544KB.
+Elapsed time: 0:00.38[h:]min:sec. CPU time: user 0.25 sys 0.09 (90%). Peak memory: 122652KB.
+Elapsed time: 0:01.23[h:]min:sec. CPU time: user 13.83 sys 0.12 (1137%). Peak memory: 120604KB.
+Elapsed time: 0:00.33[h:]min:sec. CPU time: user 0.27 sys 0.06 (99%). Peak memory: 119528KB.
+Elapsed time: 0:01.95[h:]min:sec. CPU time: user 17.18 sys 0.38 (901%). Peak memory: 232680KB.
+Elapsed time: 0:00.53[h:]min:sec. CPU time: user 0.47 sys 0.15 (116%). Peak memory: 140784KB.
+Elapsed time: 0:00.74[h:]min:sec. CPU time: user 0.52 sys 0.14 (89%). Peak memory: 125976KB.
+Elapsed time: 0:01.21[h:]min:sec. CPU time: user 0.96 sys 0.18 (94%). Peak memory: 151420KB.
+Elapsed time: 0:05.64[h:]min:sec. CPU time: user 56.09 sys 0.39 (1001%). Peak memory: 246796KB.
+Elapsed time: 0:59.82[h:]min:sec. CPU time: user 131.59 sys 1.14 (221%). Peak memory: 1095524KB.
+Elapsed time: 0:00.35[h:]min:sec. CPU time: user 0.30 sys 0.04 (96%). Peak memory: 125812KB.
+Elapsed time: 0:00.46[h:]min:sec. CPU time: user 0.38 sys 0.05 (93%). Peak memory: 122200KB.
+Elapsed time: 0:00.90[h:]min:sec. CPU time: user 0.67 sys 0.20 (97%). Peak memory: 141744KB.
+Elapsed time: 0:01.78[h:]min:sec. CPU time: user 1.07 sys 0.21 (71%). Peak memory: 385476KB.

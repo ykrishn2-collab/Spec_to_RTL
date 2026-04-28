@@ -1,0 +1,8 @@
+status=PASS
+target_period_ns=3.0
+wns_ns=0.3599
+worst_slack=0.36
+period_min_ns=2.64
+fmax_mhz=378.77
+total_power_mw=1.1800000000000002
+attempt_name=wide

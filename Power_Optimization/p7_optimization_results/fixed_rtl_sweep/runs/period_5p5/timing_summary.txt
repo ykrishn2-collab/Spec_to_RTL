@@ -1,0 +1,5 @@
+wns=2.676
+tns=0.0
+worst_slack=2.68
+period_min=2.82
+target_period=5.5

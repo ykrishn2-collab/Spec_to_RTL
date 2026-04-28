@@ -1,0 +1,2 @@
+iteration,attempt_name,target_period_ns,period_min_ns,wns_ns,worst_slack,fmax_mhz,total_power_w,total_power_mw,status,rtl_path,attempt_dir
+1,base,3.0,2.42,0.5829,0.58,413.72,0.00166,1.66,PASS,C:\Users\kyash\spec2rtl_agent\separate_p7_fullflow_run2\min_period_closure\iterations\iter_01\p7_initial_iter_01.v,C:\Users\kyash\spec2rtl_agent\separate_p7_fullflow_run2\min_period_closure\iterations\iter_01\backend_attempts\attempt_base

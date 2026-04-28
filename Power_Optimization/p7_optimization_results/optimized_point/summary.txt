@@ -1,0 +1,9 @@
+seed_rtl=min_period_closure\p7_initial_optimized.v
+optimized_rtl=optimized_point_powerfix2\p7_initial_optimized_optimized.v
+best_iteration=2
+best_attempt=base
+target_period=3.0
+worst_slack=0.47
+wns_ns=0.4689
+power_mw=1.15
+status=PASS

@@ -1,0 +1,4 @@
+attempt_name,target_period_ns,period_min_ns,wns_ns,worst_slack,fmax_mhz,total_power_w,total_power_mw,status,attempt_dir
+base,3.0,2.42,0.5829,0.58,413.72,0.00166,1.66,PASS,C:\Users\kyash\spec2rtl_agent\separate_p7_fullflow_run2\min_period_closure\iterations\iter_01\backend_attempts\attempt_base
+spread,3.0,2.56,0.4422,0.44,390.96,0.00188,1.88,PASS,C:\Users\kyash\spec2rtl_agent\separate_p7_fullflow_run2\min_period_closure\iterations\iter_01\backend_attempts\attempt_spread
+wide,3.0,2.5,0.5019,0.5,400.31,0.00184,1.84,PASS,C:\Users\kyash\spec2rtl_agent\separate_p7_fullflow_run2\min_period_closure\iterations\iter_01\backend_attempts\attempt_wide
