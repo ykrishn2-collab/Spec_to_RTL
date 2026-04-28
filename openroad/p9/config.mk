@@ -1,0 +1,10 @@
+export DESIGN_NAME      = fir_filter
+export PLATFORM         = sky130hd
+export VERILOG_FILES    = /workspace/rtl/p9_design.v
+export SDC_FILE         = /workspace/openroad/p9/constraint.sdc
+export DIE_AREA         = 0 0 384 384
+export CORE_AREA        = 30 30 354 354
+export PLACE_DENSITY    = 0.25
+export TNS_END_PERCENT  = 100
+export LEC_CHECK        = 0
+export SYNTH_OPT_HIER = 1

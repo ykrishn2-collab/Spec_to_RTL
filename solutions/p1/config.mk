@@ -1,0 +1,10 @@
+export DESIGN_NAME      = seq_detector_0011
+export PLATFORM         = sky130hd
+export VERILOG_FILES    = /workspace/rtl/p1_design.v
+export SDC_FILE         = /workspace/openroad/p1/constraint.sdc
+export DIE_AREA         = 0 0 240 240
+export CORE_AREA        = 30 30 210 210
+export PLACE_DENSITY    = 0.35
+export TNS_END_PERCENT  = 100
+export LEC_CHECK        = 0
+export SYNTH_OPT_HIER = 1

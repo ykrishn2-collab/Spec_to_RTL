@@ -1,0 +1,5 @@
+STDOUT:
+PASS
+tb/iclad_seq_detector_tb.v:46: $finish called at 18600 (1ps)
+
+STDERR:
