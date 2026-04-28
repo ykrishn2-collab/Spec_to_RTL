@@ -1,0 +1,9 @@
+STDOUT:
+ERROR at bit 5: data_in=0 detected=0 expected=1
+ERROR at bit 6: data_in=0 detected=1 expected=0
+ERROR at bit 9: data_in=0 detected=0 expected=1
+ERROR at bit 10: data_in=1 detected=1 expected=0
+Test FAILED: 4 errors found.
+tb/iclad_seq_detector_tb.v:44: $finish called at 165 (1s)
+
+STDERR:

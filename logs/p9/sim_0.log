@@ -1,0 +1,36 @@
+STDOUT:
+Sample 0: y_out = 1, expected = 1
+PASS
+Sample 1: y_out = 4, expected = 4
+PASS
+Sample 2: y_out = 10, expected = 10
+PASS
+Sample 3: y_out = 20, expected = 20
+PASS
+Sample 4: y_out = 35, expected = 35
+PASS
+Sample 5: y_out = 56, expected = 56
+PASS
+Sample 6: y_out = 84, expected = 84
+PASS
+Sample 7: y_out = 120, expected = 120
+PASS
+Sample 8: y_out = 156, expected = 156
+PASS
+Sample 9: y_out = 192, expected = 192
+PASS
+Sample 10: y_out = 228, expected = 228
+PASS
+Sample 11: y_out = 264, expected = 264
+PASS
+Sample 12: y_out = 300, expected = 300
+PASS
+Sample 13: y_out = 336, expected = 336
+PASS
+Sample 14: y_out = 372, expected = 372
+PASS
+Sample 15: y_out = 408, expected = 408
+PASS
+tb/iclad_fir_tb.v:63: $finish called at 176 (1s)
+
+STDERR:
