@@ -1,0 +1,10 @@
+full_iter=1
+synth_iter=0
+backend_iter=0
+wns=0.0
+tns=0.0
+worst_slack=1.33
+period_min=3.17
+target_period=4.5
+synth_strategy=baseline_speed
+backend_iter=0

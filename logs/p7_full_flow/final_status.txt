@@ -1,0 +1,15 @@
+spec=specs\p7.yaml
+rtl=rtl\p7_design.v
+tb=tb\iclad_exp_tb.v
+config=openroad\p7\config.mk
+gds=openroad\p7\out\p7.gds
+synth_netlist=openroad\p7\out\p7_gate_synth.v
+closed_netlist=openroad\p7\out\p7_closed.v
+wrapper=openroad\p7\gls\exp_fixed_point_gls_wrapper.v
+models=openroad\p7\sky130_fd_sc_hd_models
+die_area=240x240
+synth_strategy=baseline_speed
+wns=0.0
+tns=0.0
+period_min=3.17
+status=PASS

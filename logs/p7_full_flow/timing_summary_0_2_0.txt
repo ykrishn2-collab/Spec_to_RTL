@@ -1,0 +1,7 @@
+wns=-4.12
+tns=-111.47
+worst_slack=-4.12
+period_min=8.62
+target_period=4.5
+synth_strategy=insbuf_retime
+backend_iter=0

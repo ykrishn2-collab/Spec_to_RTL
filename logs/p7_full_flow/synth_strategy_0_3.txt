@@ -1,0 +1,2 @@
+name=hier_opt
+SYNTH_OPT_HIER=1

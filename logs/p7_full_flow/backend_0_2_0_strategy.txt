@@ -1,0 +1,5 @@
+die_size=240
+margin=30
+place_density=0.35
+tns_end_percent=100
+synth_strategy=insbuf_retime

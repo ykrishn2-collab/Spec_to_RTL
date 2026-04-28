@@ -1,0 +1,2 @@
+name=retime_top
+SYNTH_RETIME_MODULES=exp_fixed_point

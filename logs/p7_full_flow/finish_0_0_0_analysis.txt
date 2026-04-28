@@ -1,0 +1,5 @@
+tns=-32.91
+wns=-3.12
+worst_slack=-3.12
+period_min=7.62
+fmax=131.2

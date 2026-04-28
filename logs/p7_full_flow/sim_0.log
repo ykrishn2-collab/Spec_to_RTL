@@ -1,0 +1,6 @@
+STDOUT:
+exp(1.0) = 214 (expected â‰ˆ 341)
+FAIL
+tb\iclad_exp_tb.v:55: $finish called at 50 (1s)
+
+STDERR:

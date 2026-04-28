@@ -1,0 +1,3 @@
+name=hier_opt_retime
+SYNTH_OPT_HIER=1
+SYNTH_RETIME_MODULES=exp_fixed_point
